@@ -10,6 +10,7 @@ is the **same-day share** `D(0) / D(20)` for a long-short portfolio sorted on
 fitted stock-level duration, estimated with post-announcement yield controls.
 
 The writeup is in [`paper/`](paper/). The plan of work is in [ROADMAP.md](ROADMAP.md).
+**New to the project? Start with [HANDOFF.md](HANDOFF.md)** (latest status, decisions, onboarding steps).
 
 ## Layout
 
