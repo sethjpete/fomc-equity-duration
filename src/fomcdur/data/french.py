@@ -11,6 +11,8 @@ import requests
 
 from fomcdur.config import raw_dir, settings
 
+MISSING_CODES = (-99.99, -999.0)
+
 FILES = {
     "ff5_daily": "F-F_Research_Data_5_Factors_2x3_daily_CSV.zip",
     "mom_daily": "F-F_Momentum_Factor_daily_CSV.zip",
@@ -22,7 +24,7 @@ FILES = {
 def download() -> None:
     base = settings()["sources"]["french_base"]
     for name, fname in FILES.items():
-        r = requests.get(base + fname, timeout=120)
+        r = requests.get(base + fname, timeout=120, headers={"User-Agent": "Mozilla/5.0"})
         r.raise_for_status()
         with zipfile.ZipFile(io.BytesIO(r.content)) as z:
             member = z.namelist()[0]
@@ -32,7 +34,9 @@ def download() -> None:
 def parse_daily_csv(text: str) -> pd.DataFrame:
     """Parse a French daily CSV: keep the first block of YYYYMMDD rows.
 
-    Returns decimals (French files are in percent)."""
+    Returns decimals (French files are in percent). Missing-value codes -99.99
+    and -999 become NaN. Checked on the 2026-09 vintage of the FF5 and momentum
+    daily files (header lines ",Mkt-RF,SMB,HML,RMW,CMA,RF" and ",Mom")."""
     lines = text.splitlines()
     header, rows = None, []
     for line in lines:
@@ -49,7 +53,13 @@ def parse_daily_csv(text: str) -> pd.DataFrame:
     df.index = pd.to_datetime([r[0] for r in rows], format="%Y%m%d")
     df.index.name = "date"
     df.columns = [c.strip().replace("-", "_") for c in df.columns]
+    df = df.mask(df.isin(MISSING_CODES))
     return df / 100.0
+
+
+def trading_days() -> pd.DatetimeIndex:
+    """NYSE trading days, taken from the daily FF5 file (no CRSP needed)."""
+    return load_factors().index
 
 
 def load_factors() -> pd.DataFrame:
@@ -68,7 +78,8 @@ def load_me_breakpoints() -> pd.DataFrame:
         cells = [c.strip() for c in line.split(",")]
         if re.fullmatch(r"\d{6}", cells[0] or ""):
             rows.append(cells)
-    df = pd.DataFrame([r[2:22] for r in rows], dtype=float)  # skip yyyymm, count
+    # Columns: yyyymm, number of NYSE firms, then 20 percentiles in $ millions.
+    df = pd.DataFrame([r[2:22] for r in rows], dtype=float)
     df.columns = [f"p{q}" for q in range(5, 105, 5)]
     df.index = pd.to_datetime([r[0] for r in rows], format="%Y%m") + pd.offsets.MonthEnd(0)
     df.index.name = "month"

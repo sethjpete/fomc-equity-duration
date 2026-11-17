@@ -11,19 +11,29 @@ Tick boxes as work lands; open a GitHub issue per bullet when someone picks it u
 - [ ] Decide where shared data lives (shared drive path for `FOMCDUR_DATA_DIR`)
 
 ## M1. Data pipeline
-- [ ] SF Fed surprises: confirm the download URL and column names (`data/sffed.py`
-      COLUMN_MAP), confirm coverage back to 1994, count scheduled meetings (target ~250)
-- [ ] FRED and Ken French downloads run end to end; parsers checked on real files
-- [ ] CRSP daily 1994-2024 via legacy `crsp.dsf`; delisting-adjusted returns
-- [ ] **CRSP CIZ migration:** legacy SIZ tables stop at 2024. Pull 2025 from the CIZ
-      (`_v2`) tables and check the two formats agree on an overlap year
+- [x] SF Fed surprises: download URL and column names confirmed (sheet "FOMC (update 2023)",
+      MPS / MPS_ORTH in pp). Coverage 1988 to 2023-12-13: **239 scheduled meetings 1994-2023**
+- [x] **SF Fed coverage gap:** no surprises for 2024-2025 yet. Decided 2026-11-17: the main
+      sample ends 2023-12-31 (`sample.end`); CRSP/Compustat still pulled to 2025
+      (`sample.data_end`). Extend when the SF Fed updates the file
+- [x] FRED and Ken French parsers checked against the real files (2026-09 French vintage)
+- [x] Chen's posted estimates located: three stock-level SAS files on his HKUST page
+      (`data/chen.py`); schema printed by the data report
+- [ ] Run `make data-free report` locally to confirm the downloads end to end
+- [ ] CRSP daily 1994-2024 via legacy `crsp.dsf`; delisting-adjusted returns (code ready,
+      needs a run with WRDS access: `make data-wrds`)
+- [ ] **CRSP CIZ migration:** 2025 comes from `crsp.dsf_v2`, renamed to the legacy schema
+      (`wrds_pull.normalize_ciz`). Code ready; on first run confirm the dsf_v2 column names
+      and that the 2024 legacy vs CIZ overlap in the data report agrees
 - [ ] Compustat annual + CCM link; book equity, profitability, leverage, FF49 industries
 - [ ] Monthly stock panel: ME, microcap flag (NYSE 20th pct), lagged z-scored characteristics
 - **Check:** a data report (counts by year, missingness, event calendar) in `results/tables/`
+  (`make report` writes `data_report.md` and `fomc_calendar.csv`)
 
 ## M2. Replication of Chen (2022)
 - [ ] Market, size deciles and book-to-market deciles: day-0 durations
-- [ ] Locate and parse Chen's posted estimates (`data/chen.py`); match portfolios
+- [ ] Chen's posted estimates are stock-level (`data/chen.py`): aggregate to size and BM
+      deciles and match against ours
 - [ ] Side-by-side table and scatter, ours vs Chen's
 - [ ] Orthogonalized-surprise version (Bauer-Swanson) as robustness
 - **Check:** signs and ranking match Chen; gaps explainable by daily vs intraday returns

@@ -61,3 +61,33 @@ def post_event_changes(levels: pd.DataFrame, events: pd.DatetimeIndex,
             rows.append((e, h, *(vals[q] - vals[p] if q < len(vals) else [np.nan] * vals.shape[1])))
     df = pd.DataFrame(rows, columns=["event", "h", *levels.columns])
     return df.set_index(["event", "h"])
+
+
+MARKET_CLOSE_HOUR = 16.0
+
+
+def _hour(t: str) -> float:
+    """'2:15pm' -> 14.25; unparseable -> NaN."""
+    try:
+        ts = pd.to_datetime(str(t).strip().lower(), format="%I:%M%p")
+    except (ValueError, TypeError):
+        return np.nan
+    return ts.hour + ts.minute / 60
+
+
+def build_calendar(surprises: pd.DataFrame, trading_days: pd.DatetimeIndex) -> pd.DataFrame:
+    """Map each announcement to its day-0 trading day.
+
+    Announcements on non-trading days, or at/after the 4pm close, belong to the next
+    trading day's close-to-close return. Announcements before the open (some
+    unscheduled ones) belong to the same day: the prior close to that day's close
+    contains them. Adds `day0`, `hour` and `shifted` (day0 != announcement date).
+    """
+    cal = surprises.copy()
+    hour = cal["time"].map(_hour) if "time" in cal.columns else pd.Series(np.nan, cal.index)
+    after_close = hour >= MARKET_CLOSE_HOUR
+    target = cal["date"] + pd.to_timedelta(after_close.astype(int), unit="D")
+    cal["day0"] = align_to_trading_days(target, trading_days)
+    cal["hour"] = hour
+    cal["shifted"] = cal["day0"] != cal["date"]
+    return cal

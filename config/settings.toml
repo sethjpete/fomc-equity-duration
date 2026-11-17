@@ -2,7 +2,12 @@
 
 [sample]
 start = "1994-01-01"
-end = "2025-12-31"
+# Main sample ends with the SF Fed file (last surprise 2023-12-13; decided 2026-11-17).
+# Extend when the SF Fed adds 2024-2025 surprises.
+end = "2023-12-31"
+# Raw CRSP/Compustat pulls run further, so post-event windows and a later
+# extension to 2024-2025 need no new pull.
+data_end = "2025-12-31"
 max_horizon = 20          # trading days after the announcement
 prespecified_horizons = [5, 20]
 
@@ -18,13 +23,20 @@ surprise_scale = 0.01
 characteristics = ["log_me", "log_bm", "op_prof", "leverage"]
 industry_scheme = "ff49"
 
+[wrds]
+# Legacy CRSP SIZ tables (crsp.dsf, dsenames, dsedelist) stop at the end of 2024.
+# Years after this come from the CIZ table crsp.dsf_v2.
+legacy_end_year = 2024
+
 [strategy]
 cost_bps_per_side = 10
 
 [sources]
 fred_url = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}"
 french_base = "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/"
-# TODO(M1): confirm the current download link on the SF Fed data page
-# (https://www.frbsf.org/research-and-insights/data-and-indicators/monetary-policy-surprises/).
-# Leave empty to read a manually saved file from data/raw/sffed/.
-sffed_url = ""
+# Linked from https://www.frbsf.org/research-and-insights/data-and-indicators/monetary-policy-surprises/
+# (checked 2026-11-17; covers 1988-2023). Leave empty to read a manually saved
+# file from data/raw/sffed/.
+sffed_url = "https://www.frbsf.org/wp-content/uploads/monetary-policy-surprises-data.xlsx"
+# Chen (2022, JFQA) posted stock-level effective duration estimates (SAS datasets).
+chen_base = "https://chenzhanhui.people.ust.hk/"
