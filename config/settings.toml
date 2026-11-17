@@ -18,13 +18,20 @@ surprise_scale = 0.01
 characteristics = ["log_me", "log_bm", "op_prof", "leverage"]
 industry_scheme = "ff49"
 
+[wrds]
+# Legacy CRSP SIZ tables (crsp.dsf, dsenames, dsedelist) stop at the end of 2024.
+# Years after this come from the CIZ table crsp.dsf_v2.
+legacy_end_year = 2024
+
 [strategy]
 cost_bps_per_side = 10
 
 [sources]
 fred_url = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}"
 french_base = "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/"
-# TODO(M1): confirm the current download link on the SF Fed data page
-# (https://www.frbsf.org/research-and-insights/data-and-indicators/monetary-policy-surprises/).
-# Leave empty to read a manually saved file from data/raw/sffed/.
-sffed_url = ""
+# Linked from https://www.frbsf.org/research-and-insights/data-and-indicators/monetary-policy-surprises/
+# (checked 2026-11-17; covers 1988-2023). Leave empty to read a manually saved
+# file from data/raw/sffed/.
+sffed_url = "https://www.frbsf.org/wp-content/uploads/monetary-policy-surprises-data.xlsx"
+# Chen (2022, JFQA) posted stock-level effective duration estimates (SAS datasets).
+chen_base = "https://chenzhanhui.people.ust.hk/"

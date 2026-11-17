@@ -58,15 +58,20 @@ pytest -q
 | Compustat annual + CCM link | `data/wrds_pull.py` | WRDS |
 | SF Fed monetary policy surprises | `data/sffed.py` | Free (Excel) |
 | DGS2, DGS10 | `data/fred.py` | Free |
-| Chen's posted durations | `data/chen.py` | Free |
+| Chen's posted durations (stock-level SAS files) | `data/chen.py` | Free |
 | FF5, momentum, RF (daily) | `data/french.py` | Free |
 | NYSE ME breakpoints | `data/french.py` | Free |
 | 49-industry SIC definitions | `data/french.py` | Free |
 
 ```bash
-make data-free     # FRED, French, SF Fed
-make data-wrds     # CRSP + Compustat (prompts for your WRDS password once)
+make data-free     # FRED, French, SF Fed, Chen
+make data-wrds     # CRSP (legacy to 2024, CIZ for 2025, plus a 2024 CIZ overlap) + Compustat
+make report        # results/tables/data_report.md and fomc_calendar.csv
 ```
+
+The SF Fed surprise file currently ends at 2023-12-13 (239 scheduled meetings
+1994-2023); see ROADMAP M1 for the 2024-2025 gap. Legacy CRSP tables stop at 2024,
+so later years come from the CIZ table `crsp.dsf_v2`, renamed to the legacy schema.
 
 **Credentials never go in the repo.** Only `WRDS_USERNAME` lives in `.env`
 (git-ignored). The `wrds` package stores the password in `~/.pgpass` in your home
@@ -78,5 +83,7 @@ directory. CRSP and Compustat extracts are licensed and are git-ignored under
 - Surprises are in percentage points in the raw file; `duration.surprise_scale = 0.01`
   converts to decimals so duration is in years (10bp tightening x D=10 = -1%).
 - Day 0 is the announcement day; windows are close-to-close; `h` counts trading days.
+  Announcements at or after the 4pm close, or on non-trading days, move to the next
+  trading day (only 2020-03-15 so far). Trading days come from the French daily file.
 - Characteristics become usable 6 months after fiscal year end and are z-scored within month.
 - Every estimate used for a portfolio date uses only meetings strictly before that date.
