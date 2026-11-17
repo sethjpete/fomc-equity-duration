@@ -7,9 +7,9 @@ import re
 import zipfile
 
 import pandas as pd
-import requests
 
 from fomcdur.config import raw_dir, settings
+from fomcdur.data import http
 
 MISSING_CODES = (-99.99, -999.0)
 
@@ -24,8 +24,7 @@ FILES = {
 def download() -> None:
     base = settings()["sources"]["french_base"]
     for name, fname in FILES.items():
-        r = requests.get(base + fname, timeout=120, headers={"User-Agent": "Mozilla/5.0"})
-        r.raise_for_status()
+        r = http.get(base + fname)
         with zipfile.ZipFile(io.BytesIO(r.content)) as z:
             member = z.namelist()[0]
             (raw_dir("french") / f"{name}.txt").write_bytes(z.read(member))

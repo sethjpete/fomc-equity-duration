@@ -21,9 +21,9 @@ download to print their schema.
 from __future__ import annotations
 
 import pandas as pd
-import requests
 
 from fomcdur.config import raw_dir, settings
+from fomcdur.data import http
 
 FILES = {
     "table1": "duration_table1.sas7bdat",
@@ -35,8 +35,7 @@ FILES = {
 def download() -> None:
     base = settings()["sources"]["chen_base"]
     for fname in FILES.values():
-        r = requests.get(base + fname, timeout=120, headers={"User-Agent": "Mozilla/5.0"})
-        r.raise_for_status()
+        r = http.get(base + fname)
         (raw_dir("chen") / fname).write_bytes(r.content)
 
 

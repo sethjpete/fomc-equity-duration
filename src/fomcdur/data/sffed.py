@@ -18,9 +18,9 @@ from __future__ import annotations
 from pathlib import Path
 
 import pandas as pd
-import requests
 
 from fomcdur.config import raw_dir, settings
+from fomcdur.data import http
 
 FILENAME = "monetary_policy_surprises.xlsx"
 SHEET = "FOMC (update 2023)"
@@ -46,8 +46,7 @@ def download() -> Path:
                 f"Set sources.sffed_url in config/settings.toml or save the SF Fed file to {dest}"
             )
         return dest
-    r = requests.get(url, timeout=120, headers={"User-Agent": "Mozilla/5.0"})
-    r.raise_for_status()
+    r = http.get(url)
     dest.write_bytes(r.content)
     return dest
 
