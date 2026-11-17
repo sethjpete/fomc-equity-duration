@@ -33,7 +33,11 @@ from fomcdur.config import raw_dir, settings
 
 
 def connect():
-    import wrds  # optional dependency: pip install -e ".[wrds]"
+    try:
+        import wrds
+    except ImportError as e:
+        raise ImportError("The wrds package is missing; reinstall with `make install` "
+                          "(pip install -e \".[dev]\")") from e
 
     user = os.environ.get("WRDS_USERNAME")
     if not user:

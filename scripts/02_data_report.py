@@ -83,7 +83,7 @@ def surprises():
                  f"Missing MPS: {', '.join(str(d.date()) for d in cal.loc[cal['mps'].isna(), 'date'])}. "
                  f"Scheduled with MPS_ORTH missing: {int(sched['mps_orth'].isna().sum())} "
                  "(Mar-Dec 2020 by design).")
-    if end < END:
+    if end.year < END.year:
         gap_years = range(end.year + 1, END.year + 1)
         lines.append(f"\n**Coverage gap:** the file stops at {end.date()}, so scheduled meetings in "
                      f"{', '.join(map(str, gap_years))} (8 a year) have no surprise yet.")
@@ -148,8 +148,19 @@ def crsp():
     table(pd.DataFrame(rows).set_index("year"), floatfmt=".3g")
     dl = raw_dir("crsp") / "dsedelist.parquet"
     if dl.exists():
+        from fomcdur.clean.universe import ACTIVE_CODE, is_performance_delisting
         dd = pd.read_parquet(dl)
-        lines.append(f"\nDelistings: {len(dd):,} events, dlret missing {dd['dlret'].isna().mean():.1%}.")
+        real = dd[dd["dlstcd"] != ACTIVE_CODE]
+        perf = real[is_performance_delisting(real["dlstcd"])]
+        lines.append(f"\nDelisting file: {len(dd):,} rows, of which {len(dd) - len(real):,} are "
+                     f"code 100 (still active, no delisting). Of {len(real):,} actual delistings, "
+                     f"dlret missing for {real['dlret'].isna().mean():.1%}; of {len(perf):,} "
+                     f"performance delistings (500, 520-584), missing for "
+                     f"{perf['dlret'].isna().mean():.1%} (imputed -30% NYSE/AMEX, -55% Nasdaq).\n")
+        grp = real.groupby(real["dlstcd"] // 100 * 100).agg(
+            n=("dlret", "size"), dlret_missing=("dlret", lambda x: x.isna().mean()))
+        grp.index.name = "dlstcd group"
+        table(grp, floatfmt=".3g")
     ov = sorted((raw_dir("crsp") / "overlap").glob("dsf_ciz_*.parquet"))
     for f in ov:
         y = int(f.stem.split("_")[-1])
@@ -164,15 +175,31 @@ def compustat():
     p = raw_dir("compustat") / "funda.parquet"
     if not p.exists():
         raise FileNotFoundError("no Compustat file yet (run `make data-wrds`)")
+    from fomcdur.clean.characteristics import (
+        book_equity_raw,
+        compustat_characteristics,
+        link_to_permno,
+    )
     f = pd.read_parquet(p)
-    from fomcdur.clean.characteristics import compustat_characteristics
     c = compustat_characteristics(f)
-    by = c.groupby(c["datadate"].dt.year).agg(firms=("gvkey", "nunique"),
-                                              be_missing=("be", lambda x: x.isna().mean()),
-                                              op_missing=("op_prof", lambda x: x.isna().mean()),
-                                              lev_missing=("leverage", lambda x: x.isna().mean()))
-    table(by, floatfmt=".3g")
+    c["be_raw_missing"] = book_equity_raw(f).isna().to_numpy()
+    c["be_nonpos"] = (book_equity_raw(f) <= 0).to_numpy()
     link = pd.read_parquet(raw_dir("compustat") / "ccm_link.parquet")
+    linked = link_to_permno(c, link)
+
+    def summary(df):
+        return df.groupby(df["datadate"].dt.year).agg(
+            firms=("gvkey", "nunique"),
+            be_missing=("be", lambda x: x.isna().mean()),
+            of_which_be_nonpos=("be_nonpos", "mean"),
+            of_which_no_data=("be_raw_missing", "mean"),
+            lev_missing=("leverage", lambda x: x.isna().mean()))
+
+    lines.append("All Compustat firm-years (includes firms that never appear in CRSP). "
+                 "`be_missing` = no usable BE, split into BE <= 0 and BE inputs missing:\n")
+    table(summary(c), floatfmt=".3g")
+    lines.append("\nCRSP-linked firm-years only (the ones the stock panel uses):\n")
+    table(summary(linked), floatfmt=".3g")
     lines.append(f"\nCCM links: {len(link):,} rows, {link['gvkey'].nunique():,} gvkeys, "
                  f"{link['permno'].nunique():,} permnos.")
 

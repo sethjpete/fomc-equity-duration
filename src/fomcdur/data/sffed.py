@@ -53,8 +53,11 @@ def download() -> Path:
 
 def _to_date(col: pd.Series) -> pd.Series:
     """Dates may arrive as datetimes or as Excel serial numbers depending on cell format."""
+    if pd.api.types.is_datetime64_any_dtype(col):  # date-formatted cells (the real file)
+        return col.dt.normalize()
     num = pd.to_numeric(col, errors="coerce")
-    if num.notna().mean() > 0.9:
+    # Excel serials for 1900-2173 lie in (0, 100000); anything else is not a serial.
+    if num.notna().mean() > 0.9 and num.dropna().between(1, 100_000).all():
         return pd.to_datetime(num, unit="D", origin="1899-12-30").dt.normalize()
     return pd.to_datetime(col).dt.normalize()
 

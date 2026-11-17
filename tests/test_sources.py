@@ -32,7 +32,8 @@ SFFED_ROWS = [
 ]
 
 
-def write_sffed(path):
+def write_sffed(path, as_dates=False):
+    """as_dates=True stores real date cells, as the SF Fed file does; False stores serials."""
     openpyxl = pytest.importorskip("openpyxl")
     wb = openpyxl.Workbook()
     wb.active.title = "Description"
@@ -40,13 +41,16 @@ def write_sffed(path):
     ws.append(SFFED_HEADER)
     for d, t, u, m, mo in SFFED_ROWS:
         row = dict.fromkeys(SFFED_HEADER, "NA")
+        if as_dates:
+            d = (pd.Timestamp("1899-12-30") + pd.Timedelta(days=d)).to_pydatetime()
         row.update(Date=d, Time=t, Unscheduled=u, MPS=m, MPS_ORTH=mo)
         ws.append([row[c] for c in SFFED_HEADER])
     wb.save(path)
 
 
-def test_sffed_load_real_layout(raw):
-    write_sffed(sffed.raw_dir("sffed") / sffed.FILENAME)
+@pytest.mark.parametrize("as_dates", [True, False])
+def test_sffed_load_real_layout(raw, as_dates):
+    write_sffed(sffed.raw_dir("sffed") / sffed.FILENAME, as_dates=as_dates)
     df = sffed.load()  # scheduled, from 1994, MPS present
     assert list(df["date"].dt.strftime("%Y-%m-%d")) == ["1994-02-04", "2020-04-29", "2023-12-13"]
     assert df["mps"].iloc[-1] == pytest.approx(-0.0818608)  # pp

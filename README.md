@@ -10,6 +10,7 @@ is the **same-day share** `D(0) / D(20)` for a long-short portfolio sorted on
 fitted stock-level duration, estimated with post-announcement yield controls.
 
 The writeup is in [`paper/`](paper/). The plan of work is in [ROADMAP.md](ROADMAP.md).
+**New to the project? Start with [HANDOFF.md](HANDOFF.md)** (latest status, decisions, onboarding steps).
 
 ## Layout
 
@@ -45,10 +46,12 @@ paper/                    writeup
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
-pip install -e ".[wrds,dev]"
+pip install -e ".[dev]"     # includes wrds
 cp .env.example .env        # set WRDS_USERNAME and FRED_API_KEY
-pytest -q
+make test                   # pytest -q
 ```
+
+There is no CI: run `make test` before opening a PR and note the result in the PR.
 
 ## Data
 

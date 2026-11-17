@@ -18,13 +18,14 @@ dependencies = [
   "pyarrow>=14",
   "requests>=2.31",
   "openpyxl>=3.1",
+  "wrds>=3.2",          # CRSP/Compustat pulls; pins pandas to 2.2.x
   "tabulate>=0.9",
   "python-dotenv>=1.0",
   "matplotlib>=3.8",
 ]
 
 [project.optional-dependencies]
-wrds = ["wrds>=3.2"]
+wrds = []  # kept so `pip install -e ".[wrds,dev]"` still works; wrds is now a core dependency
 dev = ["pytest>=8", "ruff>=0.4", "jupyterlab>=4"]
 
 [tool.setuptools.packages.find]

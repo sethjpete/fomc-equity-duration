@@ -4,7 +4,8 @@ Milestones are in dependency order. Each ends with a concrete check so we know i
 Tick boxes as work lands; open a GitHub issue per bullet when someone picks it up.
 
 ## M0. Infrastructure (done in the initial commit)
-- [x] Package layout, settings, `.gitignore` for data and secrets, CI running tests
+- [x] Package layout, settings, `.gitignore` for data and secrets, tests (`make test`,
+      run locally before each PR; no CI)
 - [x] Estimators with synthetic-data tests: event duration, D(h) curve, same-day share
       bootstrap, pooled model, quintile/VW portfolios, event strategy
 - [ ] Everyone runs `pip install -e ".[wrds,dev]"` and `pytest` locally
@@ -19,12 +20,11 @@ Tick boxes as work lands; open a GitHub issue per bullet when someone picks it u
 - [x] FRED and Ken French parsers checked against the real files (2026-09 French vintage)
 - [x] Chen's posted estimates located: three stock-level SAS files on his HKUST page
       (`data/chen.py`); schema printed by the data report
-- [ ] Run `make data-free report` locally to confirm the downloads end to end
-- [ ] CRSP daily 1994-2024 via legacy `crsp.dsf`; delisting-adjusted returns (code ready,
-      needs a run with WRDS access: `make data-wrds`)
-- [ ] **CRSP CIZ migration:** 2025 comes from `crsp.dsf_v2`, renamed to the legacy schema
-      (`wrds_pull.normalize_ciz`). Code ready; on first run confirm the dsf_v2 column names
-      and that the 2024 legacy vs CIZ overlap in the data report agrees
+- [x] Free downloads run end to end on a local machine (2026-11-17)
+- [x] CRSP daily 1994-2024 via legacy `crsp.dsf` (pulled 2026-11-17); delisting returns
+      attached to the last trading day with Shumway imputation (PR #4)
+- [x] **CRSP CIZ migration:** 2025 comes from `crsp.dsf_v2`, renamed to the legacy schema
+      (`wrds_pull.normalize_ciz`). First run OK; 2024 overlap: ret corr 1.0, max diff 15bp
 - [ ] Compustat annual + CCM link; book equity, profitability, leverage, FF49 industries
 - [ ] Monthly stock panel: ME, microcap flag (NYSE 20th pct), lagged z-scored characteristics
 - **Check:** a data report (counts by year, missingness, event calendar) in `results/tables/`
