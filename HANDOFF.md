@@ -58,9 +58,10 @@ synthetic data, a GitHub Actions workflow, and a roadmap with milestones M1 to M
    book-to-market deciles. Group Chen's stock-level estimates into the same deciles and
    build the side-by-side table and scatter. Read how Chen bounds estimates to [1, 300] first.
 5. **Fix GitHub Actions.** Every CI run fails within about 2 seconds without being
-   assigned a runner, including on `main`, so no tests ever run. Check the repo's
-   Settings, then Actions, then General, and the account's billing and spending limit.
-   Until it's fixed, run `pytest -q` locally before opening a PR.
+   assigned a runner, including on `main`. GitHub's note on the job says it "was not
+   started because your account is locked due to a billing issue". Seth resolves this
+   at https://github.com/settings/billing (payment method or open invoice), then re-runs
+   the jobs. Until it's fixed, run `pytest -q` locally before opening a PR.
 
 ## 3. How Kenzo and Grigorios catch up
 
@@ -118,5 +119,7 @@ synthetic data, a GitHub Actions workflow, and a roadmap with milestones M1 to M
   design. The one after-close announcement (2020-03-15, 5pm Sunday) maps to day 0 = 2020-03-16.
 - **Chen (2022)** is Zhanhui Chen at HKUST, not Andrew Chen. His files are on
   https://chenzhanhui.people.ust.hk/publications.html.
-- **CI** runs never start (see section 2, item 5). A red `pytest` check that finishes
-  in about 2 seconds without a runner is not a test failure.
+- **CI** runs never start while the account's billing lock is in place (see section 2,
+  item 5). A red `pytest` check that finishes in about 2 seconds without a runner is not
+  a test failure. The check run's annotations
+  (`gh api repos/<owner>/<repo>/check-runs/<id>/annotations`) give the reason.
