@@ -1,0 +1,50 @@
+# --- Data: never commit raw or derived data (CRSP/Compustat are licensed) ---
+data/raw/*
+data/interim/*
+data/processed/*
+!data/**/.gitkeep
+*.parquet
+*.feather
+*.h5
+*.dta
+*.sas7bdat
+
+# --- Secrets ---
+.env
+.env.*
+!.env.example
+.pgpass
+*.pem
+credentials*
+
+# --- Large outputs (tables and figures are small and may be committed) ---
+results/**/*.pkl
+results/cache/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+
+# --- Notebooks / editors / OS ---
+.ipynb_checkpoints/
+.vscode/
+.idea/
+.DS_Store
+
+# --- LaTeX build files in paper/ ---
+paper/**/*.aux
+paper/**/*.log
+paper/**/*.out
+paper/**/*.synctex.gz
+paper/**/*.bbl
+paper/**/*.blg
+paper/**/*.fdb_latexmk
+paper/**/*.fls

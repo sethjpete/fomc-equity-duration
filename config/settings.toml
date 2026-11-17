@@ -1,0 +1,30 @@
+# Project-wide settings. Paths are relative to the repo root unless absolute.
+
+[sample]
+start = "1994-01-01"
+end = "2025-12-31"
+max_horizon = 20          # trading days after the announcement
+prespecified_horizons = [5, 20]
+
+[universe]
+share_codes = [10, 11]    # CRSP common shares
+exchange_codes = [1, 2, 3]  # NYSE, AMEX, NASDAQ
+microcap_nyse_pct = 20    # drop stocks below this NYSE ME percentile
+
+[duration]
+# Surprises are in percentage points in the SF Fed file; divide by 100 so that
+# duration is in years (a 10bp surprise times D=10 is a 1% price move).
+surprise_scale = 0.01
+characteristics = ["log_me", "log_bm", "op_prof", "leverage"]
+industry_scheme = "ff49"
+
+[strategy]
+cost_bps_per_side = 10
+
+[sources]
+fred_url = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}"
+french_base = "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/"
+# TODO(M1): confirm the current download link on the SF Fed data page
+# (https://www.frbsf.org/research-and-insights/data-and-indicators/monetary-policy-surprises/).
+# Leave empty to read a manually saved file from data/raw/sffed/.
+sffed_url = ""
