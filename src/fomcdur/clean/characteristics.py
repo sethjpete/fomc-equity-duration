@@ -13,11 +13,16 @@ import pandas as pd
 AVAILABILITY_LAG_MONTHS = 6
 
 
-def book_equity(f: pd.DataFrame) -> pd.Series:
-    """Fama-French book equity: SE + deferred taxes - preferred stock."""
+def book_equity_raw(f: pd.DataFrame) -> pd.Series:
+    """Fama-French book equity: SE + deferred taxes - preferred stock (can be <= 0)."""
     se = f["seq"].fillna(f["ceq"] + f["pstk"].fillna(0)).fillna(f["at"] - f["lt"])
     ps = f["pstkrv"].fillna(f["pstkl"]).fillna(f["pstk"]).fillna(0)
-    be = se + f["txditc"].fillna(0) - ps
+    return se + f["txditc"].fillna(0) - ps
+
+
+def book_equity(f: pd.DataFrame) -> pd.Series:
+    """Book equity with non-positive values set to missing, as in Fama-French."""
+    be = book_equity_raw(f)
     return be.where(be > 0)
 
 
