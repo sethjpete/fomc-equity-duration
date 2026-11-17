@@ -51,17 +51,50 @@ def test_treasury_to_fred_matches_fred_format():
     assert y.iloc[-1] == 4.40
 
 
-def test_download_falls_back_to_treasury_and_skips_existing(tmp_path, monkeypatch):
+def test_api_json_to_fred():
+    payload = {"observations": [
+        {"realtime_start": "x", "realtime_end": "x", "date": "2023-01-02", "value": "."},
+        {"realtime_start": "x", "realtime_end": "x", "date": "2023-01-03", "value": "4.40"}]}
+    y = fred.parse(fred.api_json_to_fred(payload, "DGS2"))
+    assert y.isna().sum() == 1 and y.loc["2023-01-03"] == 4.40
+    with pytest.raises(ValueError, match="Bad Request"):
+        fred.api_json_to_fred({"error_code": 400, "error_message": "Bad Request. bad key"}, "DGS2")
+
+
+@pytest.fixture
+def fred_env(tmp_path, monkeypatch):
     monkeypatch.setattr(config, "RAW", tmp_path)
-    (tmp_path / "fred").mkdir()
-    (tmp_path / "fred" / "DGS10.csv").write_text("observation_date,DGS10\n2023-01-03,3.79\n")
-
-    def fred_hangs(series):
-        raise requests.ReadTimeout("read timed out")
-
-    monkeypatch.setattr(fred, "_from_fred", fred_hangs)
     monkeypatch.setattr(fred, "_treasury_year",
                         lambda y: pd.read_csv(pd.io.common.StringIO(TREASURY)))
+    return tmp_path
+
+
+def test_download_uses_api_when_key_set(fred_env, monkeypatch):
+    monkeypatch.setenv("FRED_API_KEY", "k")
+    seen = []
+    monkeypatch.setattr(fred, "_from_api", lambda s, key: (seen.append((s, key)), fred.api_json_to_fred(
+        {"observations": [{"date": "2023-01-03", "value": "1.0"}]}, s))[1])
+    fred.download()
+    assert seen == [("DGS2", "k"), ("DGS10", "k")]
+    assert fred.load().loc["2023-01-03", "DGS10"] == 1.0
+
+
+def test_download_falls_back_to_treasury_and_skips_existing(fred_env, monkeypatch):
+    monkeypatch.setenv("FRED_API_KEY", "k")
+    (fred_env / "fred").mkdir()
+    (fred_env / "fred" / "DGS10.csv").write_text("observation_date,DGS10\n2023-01-03,3.79\n")
+
+    def api_fails(series, key):
+        raise requests.ConnectionError("dropped")
+
+    monkeypatch.setattr(fred, "_from_api", api_fails)
     fred.download()
     df = fred.load()
     assert df.loc["2023-01-03", "DGS2"] == 4.40 and df.loc["2023-01-03", "DGS10"] == 3.79
+
+
+def test_download_without_key_uses_treasury(fred_env, monkeypatch):
+    monkeypatch.delenv("FRED_API_KEY", raising=False)
+    monkeypatch.setattr(fred, "_from_api", lambda *a: pytest.fail("API called without a key"))
+    fred.download()
+    assert fred.load().loc["2023-01-03", "DGS10"] == 3.79

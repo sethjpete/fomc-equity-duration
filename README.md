@@ -46,7 +46,7 @@ paper/                    writeup
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[wrds,dev]"
-cp .env.example .env        # set WRDS_USERNAME
+cp .env.example .env        # set WRDS_USERNAME and FRED_API_KEY
 pytest -q
 ```
 
@@ -57,7 +57,7 @@ pytest -q
 | CRSP daily stock file + delistings | `data/wrds_pull.py` | WRDS |
 | Compustat annual + CCM link | `data/wrds_pull.py` | WRDS |
 | SF Fed monetary policy surprises | `data/sffed.py` | Free (Excel) |
-| DGS2, DGS10 | `data/fred.py` | Free |
+| DGS2, DGS10 | `data/fred.py` | FRED API, free key ([get one](https://fred.stlouisfed.org/docs/api/api_key.html)); Treasury.gov fallback |
 | Chen's posted durations (stock-level SAS files) | `data/chen.py` | Free |
 | FF5, momentum, RF (daily) | `data/french.py` | Free |
 | NYSE ME breakpoints | `data/french.py` | Free |
@@ -74,7 +74,10 @@ The SF Fed surprise file currently ends at 2023-12-13, so the main sample is the
 pulled through `sample.data_end` (2025) so the sample can be extended later. Legacy CRSP tables stop at 2024,
 so later years come from the CIZ table `crsp.dsf_v2`, renamed to the legacy schema.
 
-**Credentials never go in the repo.** Only `WRDS_USERNAME` lives in `.env`
+**Sources use official APIs with keys where one exists** (FRED API, WRDS). Ken
+French, the SF Fed and Chen publish static files only, so those are plain downloads.
+
+**Credentials never go in the repo.** `WRDS_USERNAME` and `FRED_API_KEY` live in `.env`
 (git-ignored). The `wrds` package stores the password in `~/.pgpass` in your home
 directory. CRSP and Compustat extracts are licensed and are git-ignored under
 `data/`; share them through a shared drive and point `FOMCDUR_DATA_DIR` at it.

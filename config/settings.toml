@@ -32,7 +32,8 @@ legacy_end_year = 2024
 cost_bps_per_side = 10
 
 [sources]
-fred_url = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}"
+# Official FRED API; key from FRED_API_KEY in .env.
+fred_api_url = "https://api.stlouisfed.org/fred/series/observations"
 french_base = "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/"
 # Linked from https://www.frbsf.org/research-and-insights/data-and-indicators/monetary-policy-surprises/
 # (checked 2026-11-17; covers 1988-2023). Leave empty to read a manually saved
