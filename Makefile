@@ -2,8 +2,8 @@ PY ?= python
 
 .PHONY: install data data-free data-wrds report test lint
 
-install:            ## editable install with WRDS + dev extras
-	$(PY) -m pip install -e ".[wrds,dev]"
+install:            ## editable install (includes wrds) + dev tools
+	$(PY) -m pip install -e ".[dev]"
 
 data: data-free data-wrds
 

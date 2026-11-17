@@ -45,7 +45,7 @@ paper/                    writeup
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
-pip install -e ".[wrds,dev]"
+pip install -e ".[dev]"     # includes wrds
 cp .env.example .env        # set WRDS_USERNAME and FRED_API_KEY
 pytest -q
 ```
