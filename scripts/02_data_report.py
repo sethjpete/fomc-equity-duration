@@ -87,6 +87,9 @@ def surprises():
         gap_years = range(end.year + 1, END.year + 1)
         lines.append(f"\n**Coverage gap:** the file stops at {end.date()}, so scheduled meetings in "
                      f"{', '.join(map(str, gap_years))} (8 a year) have no surprise yet.")
+    elif end < pd.Timestamp(S["sample"]["data_end"]):
+        lines.append(f"\nMain sample ends {END.date()} with the SF Fed file; meetings after "
+                     f"{end.date()} wait for an SF Fed update.")
     shifted = cal[cal["shifted"]]
     if len(shifted):
         lines.append("\nAnnouncements whose day 0 is a later trading day: "

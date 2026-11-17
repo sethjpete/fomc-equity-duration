@@ -3,8 +3,8 @@
 Seth Peterson, Kenzo Ota von Steun, Grigorios Chatziandreou
 
 We replicate Chen (2022, JFQA) FOMC-day effective equity duration with daily CRSP
-returns and the SF Fed monetary policy surprises (~250 scheduled meetings,
-1994-2025), then extend the event window to 20 trading days to ask whether
+returns and the SF Fed monetary policy surprises (239 scheduled meetings,
+1994-2023), then extend the event window to 20 trading days to ask whether
 rate-sensitive stocks keep repricing after the announcement. The headline number
 is the **same-day share** `D(0) / D(20)` for a long-short portfolio sorted on
 fitted stock-level duration, estimated with post-announcement yield controls.
@@ -69,8 +69,9 @@ make data-wrds     # CRSP (legacy to 2024, CIZ for 2025, plus a 2024 CIZ overlap
 make report        # results/tables/data_report.md and fomc_calendar.csv
 ```
 
-The SF Fed surprise file currently ends at 2023-12-13 (239 scheduled meetings
-1994-2023); see ROADMAP M1 for the 2024-2025 gap. Legacy CRSP tables stop at 2024,
+The SF Fed surprise file currently ends at 2023-12-13, so the main sample is the
+239 scheduled meetings from 1994 to 2023 (`sample.end`). CRSP and Compustat are
+pulled through `sample.data_end` (2025) so the sample can be extended later. Legacy CRSP tables stop at 2024,
 so later years come from the CIZ table `crsp.dsf_v2`, renamed to the legacy schema.
 
 **Credentials never go in the repo.** Only `WRDS_USERNAME` lives in `.env`

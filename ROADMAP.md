@@ -13,8 +13,9 @@ Tick boxes as work lands; open a GitHub issue per bullet when someone picks it u
 ## M1. Data pipeline
 - [x] SF Fed surprises: download URL and column names confirmed (sheet "FOMC (update 2023)",
       MPS / MPS_ORTH in pp). Coverage 1988 to 2023-12-13: **239 scheduled meetings 1994-2023**
-- [ ] **SF Fed coverage gap:** no surprises for the 16 scheduled meetings in 2024-2025 yet.
-      Decide: end the main sample in 2023, or bridge 2024-2025 with a proxy
+- [x] **SF Fed coverage gap:** no surprises for 2024-2025 yet. Decided 2026-11-17: the main
+      sample ends 2023-12-31 (`sample.end`); CRSP/Compustat still pulled to 2025
+      (`sample.data_end`). Extend when the SF Fed updates the file
 - [x] FRED and Ken French parsers checked against the real files (2026-09 French vintage)
 - [x] Chen's posted estimates located: three stock-level SAS files on his HKUST page
       (`data/chen.py`); schema printed by the data report

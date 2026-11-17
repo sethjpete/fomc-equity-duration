@@ -2,7 +2,12 @@
 
 [sample]
 start = "1994-01-01"
-end = "2025-12-31"
+# Main sample ends with the SF Fed file (last surprise 2023-12-13; decided 2026-11-17).
+# Extend when the SF Fed adds 2024-2025 surprises.
+end = "2023-12-31"
+# Raw CRSP/Compustat pulls run further, so post-event windows and a later
+# extension to 2024-2025 need no new pull.
+data_end = "2025-12-31"
 max_horizon = 20          # trading days after the announcement
 prespecified_horizons = [5, 20]
 
