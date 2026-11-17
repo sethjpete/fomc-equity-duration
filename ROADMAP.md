@@ -4,7 +4,8 @@ Milestones are in dependency order. Each ends with a concrete check so we know i
 Tick boxes as work lands; open a GitHub issue per bullet when someone picks it up.
 
 ## M0. Infrastructure (done in the initial commit)
-- [x] Package layout, settings, `.gitignore` for data and secrets, CI running tests
+- [x] Package layout, settings, `.gitignore` for data and secrets, tests (`make test`,
+      run locally before each PR; no CI)
 - [x] Estimators with synthetic-data tests: event duration, D(h) curve, same-day share
       bootstrap, pooled model, quintile/VW portfolios, event strategy
 - [ ] Everyone runs `pip install -e ".[wrds,dev]"` and `pytest` locally

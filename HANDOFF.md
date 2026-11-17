@@ -9,7 +9,7 @@ catch up.
 
 **Infrastructure (M0).** We set up the repo: the `fomcdur` Python package (src layout),
 `config/settings.toml`, one download module per data source, estimators with tests on
-synthetic data, a GitHub Actions workflow, and a roadmap with milestones M1 to M7.
+synthetic data, and a roadmap with milestones M1 to M7.
 
 **Data pipeline (M1), merged through PRs #1 to #3, with #4 open:**
 
@@ -57,11 +57,9 @@ synthetic data, a GitHub Actions workflow, and a roadmap with milestones M1 to M
 4. **M2, the Chen replication:** day-0 durations for the market and for size and
    book-to-market deciles. Group Chen's stock-level estimates into the same deciles and
    build the side-by-side table and scatter. Read how Chen bounds estimates to [1, 300] first.
-5. **Fix GitHub Actions.** Every CI run fails within about 2 seconds without being
-   assigned a runner, including on `main`. GitHub's note on the job says it "was not
-   started because your account is locked due to a billing issue". Seth resolves this
-   at https://github.com/settings/billing (payment method or open invoice), then re-runs
-   the jobs. Until it's fixed, run `pytest -q` locally before opening a PR.
+5. **No CI.** The GitHub Actions workflow was removed in PR #4. Jobs never ran because
+   of a GitHub account billing lock, and we chose not to pay for it. Tests run locally:
+   **run `make test` before every PR** and say in the PR that it passed.
 
 ## 3. How Kenzo and Grigorios catch up
 
@@ -74,7 +72,7 @@ synthetic data, a GitHub Actions workflow, and a roadmap with milestones M1 to M
    cd fomc-equity-duration
    python -m venv .venv && source .venv/bin/activate
    make install            # pip install -e ".[dev]", which includes wrds
-   pytest -q               # should pass (28 tests as of PR #4)
+   make test               # should pass (28 tests as of PR #4)
    ```
 3. **Get a free FRED API key** at https://fred.stlouisfed.org/docs/api/api_key.html.
    It needs a FRED account and takes a minute.
@@ -93,7 +91,8 @@ synthetic data, a GitHub Actions workflow, and a roadmap with milestones M1 to M
 8. **Ground rules:**
    - **Never commit data or credentials.** `data/`, `.env`, `.pgpass`, `*.parquet` and
      `*.sas7bdat` are git-ignored. CRSP and Compustat are licensed.
-   - Work on a branch, open a PR, and have someone review it. Don't push straight to `main`.
+   - Work on a branch, run `make test` (there is no CI), open a PR, and have someone
+     review it. Don't push straight to `main`.
    - Small tables and figures in `results/` can be committed. Raw extracts cannot.
 
 ## 4. Notes for future Claude sessions
@@ -119,7 +118,6 @@ synthetic data, a GitHub Actions workflow, and a roadmap with milestones M1 to M
   design. The one after-close announcement (2020-03-15, 5pm Sunday) maps to day 0 = 2020-03-16.
 - **Chen (2022)** is Zhanhui Chen at HKUST, not Andrew Chen. His files are on
   https://chenzhanhui.people.ust.hk/publications.html.
-- **CI** runs never start while the account's billing lock is in place (see section 2,
-  item 5). A red `pytest` check that finishes in about 2 seconds without a runner is not
-  a test failure. The check run's annotations
-  (`gh api repos/<owner>/<repo>/check-runs/<id>/annotations`) give the reason.
+- **There is no CI** (removed deliberately; Seth's GitHub account has a billing lock and
+  he chose not to pay). Run `make test` yourself before pushing and report the result in
+  the PR. Don't re-add a workflow unless asked.

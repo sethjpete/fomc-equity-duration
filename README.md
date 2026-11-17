@@ -48,8 +48,10 @@ paper/                    writeup
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"     # includes wrds
 cp .env.example .env        # set WRDS_USERNAME and FRED_API_KEY
-pytest -q
+make test                   # pytest -q
 ```
+
+There is no CI: run `make test` before opening a PR and note the result in the PR.
 
 ## Data
 
