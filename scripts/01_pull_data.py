@@ -1,6 +1,6 @@
 """Download raw data.
 
-Usage: python scripts/01_pull_data.py [--force] [fred french sffed chen crsp crsp_overlap compustat]
+Usage: python scripts/01_pull_data.py [--force] [fred french sffed chen crsp crsp_overlap compustat taq]
 With no step names, pulls the free sources only (WRDS steps must be named).
 A failing step does not stop the others; failures are listed at the end.
 FRED skips series already on disk unless --force is given.
@@ -9,7 +9,7 @@ FRED skips series already on disk unless --force is given.
 import sys
 import traceback
 
-from fomcdur.data import chen, fred, french, sffed, wrds_pull
+from fomcdur.data import chen, fred, french, sffed, taq, wrds_pull
 
 FREE = {
     "fred": fred.download,
@@ -21,6 +21,7 @@ WRDS = {
     "crsp": wrds_pull.pull_crsp,
     "crsp_overlap": wrds_pull.pull_crsp_overlap,
     "compustat": wrds_pull.pull_compustat,
+    "taq": taq.pull,  # intraday NBBO at FOMC meetings, 2003-09 on (TAQ_LIMIT=n for a test)
 }
 STEPS = FREE | WRDS
 
