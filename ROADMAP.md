@@ -31,12 +31,20 @@ Tick boxes as work lands; open a GitHub issue per bullet when someone picks it u
   (`make report` writes `data_report.md` and `fomc_calendar.csv`)
 
 ## M2. Replication of Chen (2022)
-- [ ] Market, size deciles and book-to-market deciles: day-0 durations
-- [ ] Chen's posted estimates are stock-level (`data/chen.py`): aggregate to size and BM
-      deciles and match against ours
-- [ ] Side-by-side table and scatter, ours vs Chen's
-- [ ] Orthogonalized-surprise version (Bauer-Swanson) as robustness
-- **Check:** signs and ranking match Chen; gaps explainable by daily vs intraday returns
+- [x] Read Chen's method (2026-11-19). His durations are per stock and per announcement:
+      a 40-minute TAQ return over a CAPM/VAR discount-rate change built from the fed funds
+      futures surprise, 47 announcements 1995-2016, trimmed to [1, 300] years, portfolios
+      value-weighted. Ours are regressions of daily day-0 returns on MPS, so levels differ;
+      M2 compares **rankings**. Details in `replication/chen_compare.py`
+- [x] Code: market, size deciles (French NYSE breakpoints) and B/M deciles (NYSE
+      breakpoints), ex financials/utilities; Chen's stock-level estimates placed in the same
+      portfolios and value-weighted (`make replicate`)
+- [x] Variants: MPS 1994-2023 (main), MPS_ORTH (Bauer-Swanson), Chen's 1995-2016 window,
+      and only the meetings in Chen's file
+- [ ] Run on real data (`make replicate`), read `results/tables/m2_chen_replication.md`
+      and `results/figures/m2_ours_vs_chen.png`
+- **Check:** Spearman of decile durations ours vs Chen clearly positive, and 10-1 spreads
+  have the same sign; gaps explainable by daily vs intraday returns
 
 ## M3. Stock-level duration model
 - [ ] Stock-event panel: day-0 returns on the surprise with lagged z-characteristics

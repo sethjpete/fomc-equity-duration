@@ -1,6 +1,6 @@
 PY ?= python
 
-.PHONY: install data data-free data-wrds report test lint
+.PHONY: install data data-free data-wrds report replicate test lint
 
 install:            ## editable install (includes wrds) + dev tools
 	$(PY) -m pip install -e ".[dev]"
@@ -15,6 +15,9 @@ data-wrds:          ## CRSP daily (legacy to 2024, CIZ after) + 2024 CIZ overlap
 
 report:             ## data report and event calendar -> results/tables/
 	$(PY) scripts/02_data_report.py
+
+replicate:          ## M2 Chen (2022) replication -> results/tables/m2_*, results/figures/m2_*
+	$(PY) scripts/03_replicate_chen.py
 
 test:
 	$(PY) -m pytest -q
