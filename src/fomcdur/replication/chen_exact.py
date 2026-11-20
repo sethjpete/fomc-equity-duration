@@ -69,6 +69,36 @@ def var_states(dsi: pd.DataFrame, yields: pd.DataFrame, hml: pd.Series) -> pd.Da
     return z.dropna()
 
 
+def monthly_states(z: pd.DataFrame) -> pd.DataFrame:
+    """Daily states -> month-end states: rm and hml compounded, dy/term/def at month end."""
+    g = z.groupby(z.index.to_period("M"))
+    out = pd.DataFrame({
+        "rm": g["rm"].apply(lambda x: (1 + x).prod() - 1),
+        "dy": g["dy"].last(), "term": g["term"].last(), "def": g["def"].last(),
+        "hml": g["hml"].apply(lambda x: (1 + x).prod() - 1),
+    })
+    out.index = out.index.to_timestamp("M")
+    return out[z.columns]
+
+
+def der_m_window_monthly(zm: pd.DataFrame, dates: pd.DatetimeIndex,
+                         mkt_win: pd.Series) -> pd.DataFrame:
+    """Monthly VAR(1) fit on months before the event month; the announcement moves the
+    return state by the 40-min market return and the dividend yield by -dy * r (prices up,
+    yield down). Returns g_rm, g_dy and der (monthly units) per event."""
+    rows = {}
+    for t in dates:
+        hist = zm.loc[:t + pd.offsets.MonthEnd(0) - pd.offsets.MonthEnd(1)]
+        if len(hist) < 60 or t not in mkt_win.index:
+            continue
+        _, G = fit_var1(hist)
+        r = float(mkt_win[t])
+        dy = float(hist["dy"].iloc[-1])
+        rows[t] = {"g_rm_m": G[0, 0], "g_dy_m": G[0, 1],
+                   "der_m_month": G[0, 0] * r + G[0, 1] * (-dy * r)}
+    return pd.DataFrame(rows).T
+
+
 def fit_var1(z: pd.DataFrame) -> tuple[np.ndarray, np.ndarray]:
     """OLS VAR(1): z_t = a + G z_{t-1} + u_t. Returns (a, G)."""
     Y = z.iloc[1:].to_numpy()

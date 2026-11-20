@@ -21,7 +21,7 @@ from fomcdur.replication import chen_compare as cc
 from fomcdur.replication import chen_exact as cx
 from fomcdur.replication import intraday
 
-ER_SCALES = {"x1 (daily)": 1.0, "x5": 5.0, "x10": 10.0, "x20": 20.0, "x252 (annual)": 252.0}
+ER_SCALES = {"x1": 1.0, "x5": 5.0, "x10": 10.0, "x12": 12.0, "x20": 20.0, "x252": 252.0}
 SIGNS = {"as written": 1, "flipped": -1}
 CRSP_COLS = ["permno", "date", "ret", "prc", "shrout", "exchcd", "siccd", "shrcd"]
 
@@ -118,7 +118,11 @@ def main() -> None:
     parts["mkt_win"] = mkt_win.reindex(parts.index)
     parts["der_m_win"] = parts["g_rm"] * parts["mkt_win"]
     base["der_m_win"] = base["date"].map(parts["der_m_win"])
-    sources = {"VAR, daily dz": "der_m", "VAR, rm = 40-min mkt": "der_m_win"}
+    mon = cx.der_m_window_monthly(cx.monthly_states(z), pd.DatetimeIndex(ev["date"]), mkt_win)
+    parts = parts.join(mon)
+    base["der_m_month"] = base["date"].map(parts["der_m_month"])
+    sources = {"VAR, daily dz": "der_m", "VAR, rm = 40-min mkt": "der_m_win",
+               "monthly VAR, 40-min mkt": "der_m_month"}
 
     # Chen's file
     ch = chen.load("all")
@@ -170,7 +174,8 @@ def main() -> None:
     dg = parts.join(imp_er.rename("his dER_M (flipped)"), how="inner")
     dg["his a (flipped)"] = -imp["a (dRf?)"].astype(float).reindex(dg.index)
     dg["dRf"] = ev.set_index("date")["drf"].reindex(dg.index)
-    cols = ["his dER_M (flipped)", "his a (flipped)", "dRf", "mkt_win", "der_m", "der_m_win"]
+    cols = ["his dER_M (flipped)", "his a (flipped)", "dRf", "mkt_win", "der_m", "der_m_win",
+            "der_m_month"]
     cols += [c for c in dg.columns if c.startswith(("c_", "dz_"))]
     cm = dg[cols].astype(float).corr()["his dER_M (flipped)"].rename("corr with his dER_M")
     rat = (dg["his dER_M (flipped)"] / dg["mkt_win"]).astype(float)
@@ -179,7 +184,11 @@ def main() -> None:
                f"Median his dER_M / 40-min market return: {rat.median():.3g} "
                f"(IQR {rat.quantile(.25):.3g} to {rat.quantile(.75):.3g}).\n")
     out.append(cm.to_frame().to_markdown(floatfmt=".2f"))
-    out.append("\n" + dg[["his dER_M (flipped)", "mkt_win", "dRf", "der_m", "g_rm"]
+    b_slope = np.polyfit(dg["mkt_win"].astype(float), dg["his dER_M (flipped)"].astype(float), 1)
+    out.append(f"\nSlope of his dER_M on the 40-min market return across announcements: "
+               f"{b_slope[0]:.3g} (intercept {b_slope[1]:.3g}).")
+    out.append("\n" + dg[["his dER_M (flipped)", "mkt_win", "dRf", "der_m", "g_rm", "g_rm_m",
+                          "der_m_month"]
                          + [c for c in dg.columns if c.startswith("c_")]]
                .astype(float).to_markdown(floatfmt=".3g"))
 

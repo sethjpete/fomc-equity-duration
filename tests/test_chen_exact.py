@@ -62,3 +62,18 @@ def test_delta_er_m_parts_sum_to_total():
     p = cx.delta_er_m_parts(zz, t)
     assert np.isclose(p[["c_rm", "c_dy", "c_term"]].sum(1).iloc[0], p["der_m"].iloc[0])
     assert np.isclose(p["der_m"].iloc[0], cx.delta_er_m(zz, t).iloc[0])
+
+
+def test_monthly_states_and_window_der():
+    rng = np.random.default_rng(3)
+    idx = pd.bdate_range("1990-01-01", periods=3000)
+    z = pd.DataFrame(rng.normal(0, 0.01, (3000, 5)), index=idx,
+                     columns=["rm", "dy", "term", "def", "hml"])
+    z["dy"] = 0.02 + z["dy"] / 10
+    zm = cx.monthly_states(z)
+    jan = z.loc["1990-01", "rm"]
+    assert np.isclose(zm["rm"].iloc[0], (1 + jan).prod() - 1)
+    assert zm["dy"].iloc[0] == z.loc["1990-01", "dy"].iloc[-1]
+    t = idx[2500]
+    out = cx.der_m_window_monthly(zm, pd.DatetimeIndex([t]), pd.Series({t: 0.01}))
+    assert np.isfinite(out["der_m_month"].iloc[0])
