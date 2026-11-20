@@ -30,7 +30,7 @@ Tick boxes as work lands; open a GitHub issue per bullet when someone picks it u
 - **Check:** a data report (counts by year, missingness, event calendar) in `results/tables/`
   (`make report` writes `data_report.md` and `fomc_calendar.csv`)
 
-## M2. Replication of Chen (2022)
+## M2. Replication of Chen (2022) (done 2026-11-20, PRs #5-#6)
 - [x] Read Chen's method (2026-11-19). His durations are per stock and per announcement:
       a 40-minute TAQ return over a CAPM/VAR discount-rate change built from the fed funds
       futures surprise, 47 announcements 1995-2016, trimmed to [1, 300] years, portfolios
@@ -72,8 +72,30 @@ Tick boxes as work lands; open a GitHub issue per bullet when someone picks it u
       beta-one stock's duration is close to mechanical (9.75 / 0.514 ~ 19 years)
 - **Check:** Spearman of decile durations ours vs Chen clearly positive, and 10-1 spreads
   have the same sign; gaps explainable by daily vs intraday returns
+- **Outcome:** B/M ranking agrees with Chen. The size shape agrees only once his own
+  estimator and [1, 300] trim are applied. Stock by stock, our Chen-exact estimates
+  correlate only 0.36 with his (calibrated dER_M). We read this as a **low signal-to-noise
+  ratio in stock-level announcement durations**: one 40-minute return per stock per
+  announcement is mostly noise. That drives the design choice below.
 
-## M3. Stock-level duration model
+## Design decisions after M2 (2026-11-20, Seth)
+- **Estimate on portfolios, not stocks.** From M3 on, durations are estimated for
+  portfolios that average out idiosyncratic noise: Ken French **49 industries** (VW, SIC map
+  from `french.load_siccodes49`) as the base cross-section, plus characteristic deciles.
+  Stock-level ratios are used only to replicate Chen.
+- **Main measure:** regression of portfolio returns on the surprise (with robust se), not
+  per-stock ratios. Intraday TAQ [-30, +10] for day 0 from 2003-09, daily CRSP for
+  1994-2003 and for horizons h >= 1.
+- **Critique of Chen's metric goes in the extension (M6):** the [1, 300] trim selects on
+  noise, and with dER_M roughly proportional to the market return, a beta-one stock's
+  duration is close to mechanical (~19 years). The untrimmed intraday measure is our
+  alternative.
+
+## M3. Duration model (industry and characteristic portfolios)
+- [ ] Day-0 durations for the 49 industry portfolios (intraday from 2003, daily before),
+      with robustness block (ex top-5 |MPS|, ex 2008-09/2020, subperiods)
+- [ ] Industry-portfolio panel: duration on lagged portfolio characteristics (VW averages
+      of z-characteristics); compare with the stock-level pooled fit as a noisy benchmark
 - [ ] Stock-event panel: day-0 returns on the surprise with lagged z-characteristics
 - [ ] Expanding-window pooled fit at each month end (only earlier meetings); store coefficients
 - [ ] Fitted durations `D_hat_{i,m}`; check stability of coefficients over time
@@ -100,6 +122,10 @@ Tick boxes as work lands; open a GitHub issue per bullet when someone picks it u
 - [ ] Subsamples: pre/post 2008, ZLB periods
 - [ ] Optional: large non-FOMC moves in the 2y yield and the 10y-2y slope
 - [ ] Placebo: random non-FOMC days with pseudo-surprises
+- [ ] Chen critique: trim-induced selection (scripts/04, 06), mechanical beta-one duration
+      under his dER_M; untrimmed intraday regression measure as the alternative
+- [ ] Longer intraday window covering press conferences (since 2011)
+- [ ] Pre-2003 intraday: Monthly TAQ is not licensed on Seth's account; check access
 
 ## M7. Paper
 - [ ] Move the writeup to LaTeX in `paper/`, tables generated from `results/`
