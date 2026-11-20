@@ -9,6 +9,7 @@ Method: src/fomcdur/replication/chen_exact.py.
 from __future__ import annotations
 
 from datetime import date
+from itertools import product
 
 import numpy as np
 import pandas as pd
@@ -110,6 +111,15 @@ def main() -> None:
         print(f"[chen_exact] {e.date:%Y-%m-%d}: {len(x):,} stocks", flush=True)
     base = pd.concat(pieces, ignore_index=True)
 
+    # Alternative dER_M: only the market-return state moves, by the 40-min VW market return
+    parts = cx.delta_er_m_parts(z, pd.DatetimeIndex(ev["date"]))
+    mkt_win = (base.assign(w=base["ret"] * base["me"]).groupby("date")["w"].sum()
+               / base.groupby("date")["me"].sum())
+    parts["mkt_win"] = mkt_win.reindex(parts.index)
+    parts["der_m_win"] = parts["g_rm"] * parts["mkt_win"]
+    base["der_m_win"] = base["date"].map(parts["der_m_win"])
+    sources = {"VAR, daily dz": "der_m", "VAR, rm = 40-min mkt": "der_m_win"}
+
     # Chen's file
     ch = chen.load("all")
     ch["date"] = cc._sas_date(ch["eventdate"])
@@ -121,24 +131,24 @@ def main() -> None:
 
     out.append("\n## Stock-level match with Chen's posted estimates (same announcements)\n")
     rows, kept_frames = [], {}
-    for slab, sg in SIGNS.items():
-        for lab, sc in ER_SCALES.items():
-            dd = cx.durations(base, sc, sg)
-            k = dd[dd["kept"]]
-            m = k.merge(ch, on=["permno", "date"], how="outer", indicator=True)
-            both = m[m["_merge"] == "both"]
-            rows.append({
-                "denominator sign": slab, "dER_M scale": lab,
-                "our stock-events": len(dd), "ours kept": len(k), "Chen's": len(ch),
-                "matched": len(both),
-                "share of Chen's matched": len(both) / max(len(ch), 1),
-                "share of ours kept in Chen": len(both) / max(len(k), 1),
-                "corr(log D)": np.log(both["D"]).corr(np.log(both["duration"])),
-                "Spearman": both["D"].rank().corr(both["duration"].rank()),
-                "median D ours / Chen": float((both["D"] / both["duration"]).median()),
-                "mean D ours": k["D"].mean(), "mean D Chen": ch["duration"].mean(),
-            })
-            kept_frames[(slab, lab)] = dd
+    for (src, col), (slab, sg), (lab, sc) in product(sources.items(), SIGNS.items(),
+                                                    ER_SCALES.items()):
+        dd = cx.durations(base.assign(der_m=base[col]), sc, sg)
+        k = dd[dd["kept"]]
+        m = k.merge(ch, on=["permno", "date"], how="outer", indicator=True)
+        both = m[m["_merge"] == "both"]
+        rows.append({
+            "dER_M source": src, "denominator sign": slab, "dER_M scale": lab,
+            "our stock-events": len(dd), "ours kept": len(k), "Chen's": len(ch),
+            "matched": len(both),
+            "share of Chen's matched": len(both) / max(len(ch), 1),
+            "share of ours kept in Chen": len(both) / max(len(k), 1),
+            "corr(log D)": np.log(both["D"]).corr(np.log(both["duration"])),
+            "Spearman": both["D"].rank().corr(both["duration"].rank()),
+            "median D ours / Chen": float((both["D"] / both["duration"]).median()),
+            "mean D ours": k["D"].mean(), "mean D Chen": ch["duration"].mean(),
+        })
+        kept_frames[(src, slab, lab)] = dd
     out.append(pd.DataFrame(rows).to_markdown(index=False, floatfmt=".3g"))
     out.append(f"\nChen's table2 file (his main sample) has "
                f"{sum(1 for p, d in in_t2 if d in set(ev['date']))} of these stock-events.")
@@ -155,6 +165,24 @@ def main() -> None:
                "our returns or betas differ from his.\n")
     out.append(imp.to_markdown(floatfmt=".3g"))
 
+    # What his implied dER_M co-moves with. Flipped convention: his dER_M = -(a + b).
+    imp_er = -imp["a+b (dER_M?)"].astype(float)
+    dg = parts.join(imp_er.rename("his dER_M (flipped)"), how="inner")
+    dg["his a (flipped)"] = -imp["a (dRf?)"].astype(float).reindex(dg.index)
+    dg["dRf"] = ev.set_index("date")["drf"].reindex(dg.index)
+    cols = ["his dER_M (flipped)", "his a (flipped)", "dRf", "mkt_win", "der_m", "der_m_win"]
+    cols += [c for c in dg.columns if c.startswith(("c_", "dz_"))]
+    cm = dg[cols].astype(float).corr()["his dER_M (flipped)"].rename("corr with his dER_M")
+    rat = (dg["his dER_M (flipped)"] / dg["mkt_win"]).astype(float)
+    out.append("\n## What his implied dER_M moves with (per announcement)\n\nhis dER_M = "
+               "-(a + b) from the table above. c_k = G[0,k] x dz_k are our VAR's contributions. "
+               f"Median his dER_M / 40-min market return: {rat.median():.3g} "
+               f"(IQR {rat.quantile(.25):.3g} to {rat.quantile(.75):.3g}).\n")
+    out.append(cm.to_frame().to_markdown(floatfmt=".2f"))
+    out.append("\n" + dg[["his dER_M (flipped)", "mkt_win", "dRf", "der_m", "g_rm"]
+                         + [c for c in dg.columns if c.startswith("c_")]]
+               .astype(float).to_markdown(floatfmt=".3g"))
+
     # Deciles with the exact D (better-matching units)
     # Best variant: the one whose kept set overlaps Chen's most (F1 of the two match shares)
     def f1(r):
@@ -162,7 +190,7 @@ def main() -> None:
         return 2 * a * b / (a + b) if a + b > 0 else 0
 
     best = max(rows, key=f1)
-    dd = kept_frames[(best["denominator sign"], best["dER_M scale"])]
+    dd = kept_frames[(best["dER_M source"], best["denominator sign"], best["dER_M scale"])]
     monthly, _ = cc.load_panels(pd.DatetimeIndex(ev["date"]),
                                 list(range(ev["date"].min().year - 1,
                                            ev["date"].max().year + 1)))

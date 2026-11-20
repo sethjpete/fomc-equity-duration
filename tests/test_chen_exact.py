@@ -52,3 +52,13 @@ def test_durations_formula_and_trim():
     assert d["kept"].tolist() == [True, False, False]          # negative; 975 > 300
     d252 = cx.durations(ev, er_scale=252)
     assert np.isclose(d252.loc[0, "denom"], 0.0005 * 252)
+
+
+def test_delta_er_m_parts_sum_to_total():
+    rng = np.random.default_rng(2)
+    zz = pd.DataFrame(rng.normal(0, 0.01, (800, 3)), columns=["rm", "dy", "term"],
+                      index=pd.bdate_range("1990-01-01", periods=800))
+    t = pd.DatetimeIndex([zz.index[700]])
+    p = cx.delta_er_m_parts(zz, t)
+    assert np.isclose(p[["c_rm", "c_dy", "c_term"]].sum(1).iloc[0], p["der_m"].iloc[0])
+    assert np.isclose(p["der_m"].iloc[0], cx.delta_er_m(zz, t).iloc[0])

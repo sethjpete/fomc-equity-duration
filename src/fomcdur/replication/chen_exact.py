@@ -91,6 +91,25 @@ def delta_er_m(z: pd.DataFrame, dates: pd.DatetimeIndex) -> pd.Series:
     return pd.Series(out, name="der_m")
 
 
+def delta_er_m_parts(z: pd.DataFrame, dates: pd.DatetimeIndex) -> pd.DataFrame:
+    """Per event date: the VAR's return-equation coefficients g_k (G[0, k]), the state changes
+    dz_k = z_t - z_{t-1}, their products c_k and the total der_m = sum c_k (as `delta_er_m`)."""
+    rows = {}
+    for t in dates:
+        hist = z.loc[:t - pd.Timedelta(days=1)]
+        if t not in z.index or len(hist) < 500:
+            continue
+        _, G = fit_var1(hist)
+        p = z.index.get_loc(t)
+        dz = z.iloc[p].to_numpy() - z.iloc[p - 1].to_numpy()
+        r = {}
+        for k, name in enumerate(z.columns):
+            r[f"g_{name}"], r[f"dz_{name}"], r[f"c_{name}"] = G[0, k], dz[k], G[0, k] * dz[k]
+        r["der_m"] = float(G[0] @ dz)
+        rows[t] = r
+    return pd.DataFrame(rows).T
+
+
 # ---------------------------------------------------------------- betas
 
 def _betas(R: np.ndarray, m: np.ndarray, min_obs: int) -> np.ndarray:
