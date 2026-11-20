@@ -52,6 +52,14 @@ Tick boxes as work lands; open a GitHub issue per bullet when someone picks it u
       noisier (day-0 sd 6.4% vs 2.0%) and ~40% of ratios are negative in every decile. So
       his high small-stock durations (and much of his level) come from the trimming. His
       upturn in decile 10 is not reproduced and stays unexplained
+- [x] Intraday day-0 returns from Millisecond TAQ (NBBO midpoints, Chen's [-30, +10] min
+      window; `make data-taq intraday`), 162 scheduled meetings 2003-09 to 2023 (Monthly TAQ
+      for 1994-2003 is not licensed). Results 2026-11-19: market D 5.2 (se 0.85, R2 0.30)
+      vs 6.7 (se 3.1, R2 0.07) daily on the same meetings. Size 10-1 +1.8 (t 3.6): small
+      stocks react less within 10 minutes (daily: flat). B/M 10-1 0.4 intraday vs 7.8 daily,
+      so the value spread builds after the window. Chen's trim applied to intraday ratios
+      gives 49 -> 24 years by size decile (his 48 -> 36). Press conferences (since 2011,
+      ~30 min after the statement) fall outside the window: a longer window is a variant to add
 - **Check:** Spearman of decile durations ours vs Chen clearly positive, and 10-1 spreads
   have the same sign; gaps explainable by daily vs intraday returns
 
