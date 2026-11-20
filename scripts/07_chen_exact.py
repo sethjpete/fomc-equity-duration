@@ -36,6 +36,11 @@ class CrspCache:
                     self.years[y] = wrds_pull.load_crsp([y], columns=cols)
                 except Exception:  # noqa: BLE001 - shrcd may be absent in some files
                     self.years[y] = wrds_pull.load_crsp([y], columns=cols[:-1])
+            num = ["ret", "prc", "shrout", "exchcd", "siccd", "shrcd"]
+            df = self.years[y]
+            for c in num:
+                if c in df:
+                    df[c] = pd.to_numeric(df[c], errors="coerce").astype("float64")
             if len(self.years) > 3:
                 self.years.pop(min(self.years))
         return pd.concat([self.years[y] for y in years], ignore_index=True)
@@ -57,6 +62,7 @@ def main() -> None:
     # dER_M
     dsi = pd.read_parquet(raw_dir("crsp") / "dsi.parquet")
     dsi["date"] = pd.to_datetime(dsi["date"])
+    dsi[["vwretd", "vwretx"]] = dsi[["vwretd", "vwretx"]].astype("float64")
     ylds = fred.load(("DGS10", "DTB3", "DBAA", "DAAA"))
     hml = french.load_factors()["HML"]
     z = cx.var_states(dsi, ylds, hml)

@@ -53,7 +53,8 @@ def var_states(dsi: pd.DataFrame, yields: pd.DataFrame, hml: pd.Series) -> pd.Da
     dsi: [date, vwretd, vwretx]; yields: DGS10, DTB3, DBAA, DAAA in percent (date index);
     hml: daily HML in decimals. Dividend yield = dividends over the past 252 days / index level.
     """
-    d = dsi.sort_values("date").set_index("date")
+    # wrds returns nullable Float64 columns; mixing them with float64 gives object arrays
+    d = dsi.sort_values("date").set_index("date")[["vwretd", "vwretx"]].astype("float64")
     level = (1 + d["vwretx"]).cumprod()
     div = (d["vwretd"] - d["vwretx"]) * level.shift(1)
     dy = div.rolling(252, min_periods=200).sum() / level
@@ -64,7 +65,7 @@ def var_states(dsi: pd.DataFrame, yields: pd.DataFrame, hml: pd.Series) -> pd.Da
         "term": (y["DGS10"] - y["DTB3"]) / 100,
         "def": (y["DBAA"] - y["DAAA"]) / 100,
         "hml": hml.reindex(d.index),
-    })
+    }).astype("float64")
     return z.dropna()
 
 
@@ -111,10 +112,11 @@ def portfolio_betas(rets: pd.DataFrame, mkt: pd.Series, me: pd.Series,
                     n_ports: int = N_BETA_PORTS, min_obs: int = BETA_MIN_OBS) -> pd.DataFrame:
     """rets: days x permnos over the estimation year; mkt: index returns on the same days;
     me: ME per permno (weights). Returns [permno, beta_pre, port, beta]."""
-    m = mkt.reindex(rets.index).to_numpy(float)
-    pre = pd.Series(_betas(rets.to_numpy(float), m, min_obs), index=rets.columns).dropna()
+    rets = rets.astype("float64")
+    m = mkt.astype("float64").reindex(rets.index).to_numpy()
+    pre = pd.Series(_betas(rets.to_numpy(), m, min_obs), index=rets.columns).dropna()
     port = pd.qcut(pre.rank(method="first"), n_ports, labels=False)
-    w = me.reindex(pre.index).fillna(0.0)
+    w = me.astype("float64").reindex(pre.index).fillna(0.0)
     post = {}
     for k, members in pre.groupby(port).groups.items():
         sub = rets[members]
