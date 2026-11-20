@@ -1,11 +1,29 @@
-# Handoff: 2026-11-17
+# Handoff (started 2026-11-17, updated 2026-11-20)
 
 Written at the end of the first working session, for Kenzo and Grigorios and for any
 future Claude session. The plan is in [ROADMAP.md](ROADMAP.md) and setup reference is
 in the [README](README.md). This note covers what changed, what's next, and how to
 catch up.
 
-## 1. What we did tonight
+## 0. Update 2026-11-20: M2 done, what's next
+
+- **M2 (Chen replication) is finished** (PRs #5 and #6). Results and the reasoning behind
+  each step are in ROADMAP M2. Short version:
+  - B/M ranking agrees with Chen. The size shape agrees only under his own estimator and
+    [1, 300] trim.
+  - The Chen-exact mode (`scripts/07_chen_exact.py`) uses a dER_M calibrated to his output
+    (0.514 x the 40-min market return): we could not reproduce his VAR. It recovers 77% of
+    his stock-level estimates, but the stock-level correlation is only 0.36.
+- **Design decision (Seth):** weak stock-level agreement = low signal-to-noise. From M3 on we
+  estimate durations on **portfolios** (French 49 industries, plus characteristic deciles),
+  by regression on the surprise. See "Design decisions after M2" in ROADMAP.
+- **Next:** M3 step 1, day-0 durations for the 49 industry portfolios, intraday from 2003-09
+  (TAQ files for 162 meetings are already on Seth's Mac) and daily before.
+- **Running heavy jobs:** WRDS and TAQ work runs on Seth's Mac (Remote Control session from
+  a Claude thread, or by hand). TAQ pulls are slow (1-11 min per meeting) and resumable.
+  Run them detached (`caffeinate`, `nohup`) with retries.
+
+## 1. What we did on 2026-11-17
 
 **Infrastructure (M0).** We set up the repo: the `fomcdur` Python package (src layout),
 `config/settings.toml`, one download module per data source, estimators with tests on
@@ -118,6 +136,11 @@ synthetic data, and a roadmap with milestones M1 to M7.
   design. The one after-close announcement (2020-03-15, 5pm Sunday) maps to day 0 = 2020-03-16.
 - **Chen (2022)** is Zhanhui Chen at HKUST, not Andrew Chen. His files are on
   https://chenzhanhui.people.ust.hk/publications.html.
+- **TAQ:** Millisecond TAQ (`taqm_YYYY.complete_nbbo_YYYYMMDD`) from 2003-09-10 only;
+  Monthly TAQ is not licensed. Link table `wrdsapps_link_crsp_taqm.taqmclink`. The `wrds`
+  package returns nullable Float64 columns: cast to float64 before numpy work.
+- **Chen-exact inputs** (`make` targets / `scripts/01_pull_data.py dsi fred_chen taq_chen`):
+  `config/chen_table_a1.csv` is his Internet Appendix Table A.1, transcribed by hand.
 - **There is no CI** (removed deliberately; Seth's GitHub account has a billing lock and
   he chose not to pay). Run `make test` yourself before pushing and report the result in
   the PR. Don't re-add a workflow unless asked.
