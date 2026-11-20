@@ -78,6 +78,13 @@ where linktype in ('LU', 'LC') and linkprim in ('P', 'C')
 """
 
 
+CRSP_DSI_SQL = """
+select date, vwretd, vwretx
+from crsp.dsi
+where date between '{start}' and '{end}'
+"""
+
+
 CIZ_DAILY_SQL = """
 select permno, dlycaldt, dlyret, dlyretx, dlyprc, shrout, dlyvol, siccd, primaryexch
 from crsp.dsf_v2
@@ -174,6 +181,14 @@ def compare_overlap(legacy: pd.DataFrame, ciz: pd.DataFrame) -> dict:
         "share_abs_prc_diff_gt_1c": float(((both["prc_leg"].abs() - both["prc_ciz"].abs()).abs()
                                            > 0.01).mean()),
     }
+
+
+def pull_dsi(db=None, start: str = "1990-01-01", end: str = "2016-12-31") -> None:
+    """CRSP daily value-weighted index returns with and without dividends (Chen's VAR: market
+    return and dividend yield, 1990-2016)."""
+    db = db or connect()
+    db.raw_sql(CRSP_DSI_SQL.format(start=start, end=end), date_cols=["date"]).to_parquet(
+        raw_dir("crsp") / "dsi.parquet", index=False)
 
 
 def pull_compustat(db=None) -> None:

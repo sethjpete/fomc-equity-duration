@@ -140,3 +140,82 @@ def pull(limit: int | None = None) -> pd.DataFrame:
     if not (raw_dir("taq") / "taqmclink.parquet").exists():
         pull_link(list(m["day0"]), db)
     return pull_nbbo(m, db, limit)
+
+
+# ---------------------------------------------------------------- Chen-exact windows
+# Chen (2022, p. 678) uses "simple average stock prices before and after time s": the mean
+# NBBO midpoint over [s-30, s) and over (s, s+10]. s is taken from his Table A.1
+# (config/chen_table_a1.csv). Stored separately in data/raw/taq_chen/.
+
+NBBO_AVG_SQL = """
+select sym_root, sym_suffix,
+       avg((best_bid + best_ask) / 2) filter (where time_m >= '{t0}' and time_m < '{s}')
+         as avg_pre,
+       avg((best_bid + best_ask) / 2) filter (where time_m > '{s}' and time_m <= '{t1}')
+         as avg_post,
+       count(*) filter (where time_m >= '{t0}' and time_m < '{s}') as n_pre,
+       count(*) filter (where time_m > '{s}' and time_m <= '{t1}') as n_post
+from taqm_{year}.complete_nbbo_{ymd}
+where time_m between '{t0}' and '{t1}'
+  and best_bid > 0 and best_ask >= best_bid
+  and (best_ask - best_bid) <= {max_spread} * (best_bid + best_ask) / 2
+group by sym_root, sym_suffix
+"""
+
+
+def avg_window(day: pd.Timestamp, s_time: str) -> dict:
+    """s_time 'HH:MM:SS' -> clock strings for s, s-30 and s+10 minutes."""
+    s = pd.Timestamp(f"{pd.Timestamp(day):%Y-%m-%d} {s_time}")
+    fmt = "%H:%M:%S"
+    return {"s": s.strftime(fmt),
+            "t0": (s - timedelta(minutes=PRE_MIN)).strftime(fmt),
+            "t1": (s + timedelta(minutes=POST_MIN)).strftime(fmt)}
+
+
+def nbbo_avg_sql(day: pd.Timestamp, s_time: str) -> str:
+    day = pd.Timestamp(day)
+    return NBBO_AVG_SQL.format(year=day.year, ymd=day.strftime("%Y%m%d"),
+                               max_spread=MAX_REL_SPREAD, **avg_window(day, s_time))
+
+
+def chen_path_for(day: pd.Timestamp):
+    return raw_dir("taq_chen") / f"nbbo_avg_{pd.Timestamp(day):%Y%m%d}.parquet"
+
+
+def pull_chen() -> pd.DataFrame:
+    """Window-average NBBO midpoints at Chen's announcements since 2003-09 (resumable).
+
+    Also extends the CRSP-TAQ link table to these dates if needed."""
+    from fomcdur.data.wrds_pull import connect
+    from fomcdur.replication.chen_exact import load_events
+
+    ev = load_events()
+    ev = ev[ev["date"] >= FIRST_DATE]
+    db = connect()
+    lp = raw_dir("taq") / "taqmclink.parquet"
+    have = set(pd.read_parquet(lp, columns=["date"])["date"]) if lp.exists() else set()
+    missing = [d for d in ev["date"] if d not in have]
+    if missing:
+        q = LINK_SQL.format(dates=",".join(f"'{d:%Y-%m-%d}'" for d in missing))
+        new = db.raw_sql(q, date_cols=["date"])
+        old = pd.read_parquet(lp) if lp.exists() else None
+        (pd.concat([old, new]) if old is not None else new).to_parquet(lp, index=False)
+    log = []
+    for r in ev.itertuples():
+        if chen_path_for(r.date).exists():
+            continue
+        t = _time.time()
+        df = db.raw_sql(nbbo_avg_sql(r.date, r.time))
+        df["date"] = r.date
+        df.to_parquet(chen_path_for(r.date), index=False)
+        log.append({"date": r.date, "symbols": len(df), "seconds": round(_time.time() - t, 1)})
+        print(f"[taq_chen] {r.date:%Y-%m-%d}: {len(df):,} symbols in {log[-1]['seconds']}s",
+              flush=True)
+    return pd.DataFrame(log)
+
+
+def load_chen_nbbo() -> pd.DataFrame:
+    files = sorted(raw_dir("taq_chen").glob("nbbo_avg_*.parquet"))
+    if not files:
+        raise FileNotFoundError("No Chen TAQ files; run `python scripts/01_pull_data.py taq_chen`")
+    return pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)

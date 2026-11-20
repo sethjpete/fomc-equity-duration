@@ -1,6 +1,6 @@
 """Download raw data.
 
-Usage: python scripts/01_pull_data.py [--force] [fred french sffed chen crsp crsp_overlap compustat taq]
+Usage: python scripts/01_pull_data.py [--force] [fred french sffed chen crsp crsp_overlap compustat dsi taq taq_chen fred_chen]
 With no step names, pulls the free sources only (WRDS steps must be named).
 A failing step does not stop the others; failures are listed at the end.
 FRED skips series already on disk unless --force is given.
@@ -16,11 +16,14 @@ FREE = {
     "french": french.download,
     "sffed": sffed.download,
     "chen": chen.download,
+    "fred_chen": fred.download_chen,  # DTB3, DBAA, DAAA for Chen's VAR
 }
 WRDS = {
     "crsp": wrds_pull.pull_crsp,
     "crsp_overlap": wrds_pull.pull_crsp_overlap,
     "compustat": wrds_pull.pull_compustat,
+    "dsi": wrds_pull.pull_dsi,  # CRSP daily VW index, 1990-2016 (Chen's VAR)
+    "taq_chen": taq.pull_chen,  # window-average NBBO at Chen's 2004-2016 announcements
     "taq": taq.pull,  # intraday NBBO at FOMC meetings, 2003-09 on (TAQ_LIMIT=n for a test)
 }
 STEPS = FREE | WRDS
