@@ -60,6 +60,16 @@ Tick boxes as work lands; open a GitHub issue per bullet when someone picks it u
       so the value spread builds after the window. Chen's trim applied to intraday ratios
       gives 49 -> 24 years by size decile (his 48 -> 36). Press conferences (since 2011,
       ~30 min after the statement) fall outside the window: a longer window is a variant to add
+- [x] Chen-exact mode (`scripts/07_chen_exact.py`, 2026-11-20): his own estimator on his 25
+      announcements with TAQ (2004-2016), matched to his posted estimates stock by stock.
+      His dRf and dER_M must be read as decreases (sign flip). No VAR we built (daily,
+      intraday-updated, monthly) reproduces his dER_M; the dER_M his estimates imply is
+      ~0.514 x the 40-min VW market return (corr 0.75). With that **calibrated** dER_M
+      (fitted to his output, not derived) we keep 77% of his stock-events, decile counts
+      match his, the size shape matches (decile 1 highest, upturn at 9-10, Spearman 0.43),
+      levels run ~10 years high, B/M is flat in both. Seth accepted this as the replication
+      (2026-11-20). Note for the extension: with dER_M proportional to the market return, a
+      beta-one stock's duration is close to mechanical (9.75 / 0.514 ~ 19 years)
 - **Check:** Spearman of decile durations ours vs Chen clearly positive, and 10-1 spreads
   have the same sign; gaps explainable by daily vs intraday returns
 
