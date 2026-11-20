@@ -121,8 +121,12 @@ def main() -> None:
     mon = cx.der_m_window_monthly(cx.monthly_states(z), pd.DatetimeIndex(ev["date"]), mkt_win)
     parts = parts.join(mon)
     base["der_m_month"] = base["date"].map(parts["der_m_month"])
+    # Calibrated: his implied dER_M is ~0.51 x the 40-min market return (slope across his
+    # 25 TAQ announcements, see "What his implied dER_M moves with"). Fitted to his output.
+    base["der_m_cal"] = 0.514 * base["date"].map(parts["mkt_win"])
     sources = {"VAR, daily dz": "der_m", "VAR, rm = 40-min mkt": "der_m_win",
-               "monthly VAR, 40-min mkt": "der_m_month"}
+               "monthly VAR, 40-min mkt": "der_m_month",
+               "calibrated 0.514 x 40-min mkt": "der_m_cal"}
 
     # Chen's file
     ch = chen.load("all")
