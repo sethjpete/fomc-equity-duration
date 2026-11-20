@@ -23,6 +23,8 @@ from fomcdur.config import raw_dir, settings
 from fomcdur.data import http
 
 SERIES = ("DGS2", "DGS10")
+# Chen (2022) VAR: TERM = DGS10 - DTB3, DEF = DBAA - DAAA (API only; no Treasury fallback)
+CHEN_SERIES = ("DTB3", "DBAA", "DAAA")
 TREASURY_COLUMNS = {"DGS2": "2 Yr", "DGS10": "10 Yr"}
 TREASURY_URL = ("https://home.treasury.gov/resource-center/data-chart-center/interest-rates/"
                 "daily-treasury-rates.csv/{year}/all")
@@ -85,6 +87,10 @@ def _from_treasury(series_list: tuple[str, ...]) -> dict[str, str]:
         print(f"  [treasury] {y}")
         frames.append(_treasury_year(y))
     return {s: treasury_to_fred(frames, s) for s in series_list}
+
+
+def download_chen(force: bool = False) -> None:
+    download(CHEN_SERIES, force=force)
 
 
 def download(series: tuple[str, ...] = SERIES, force: bool = False) -> None:
