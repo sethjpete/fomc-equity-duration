@@ -216,8 +216,8 @@ def main() -> None:
     monthly.loc[cc.is_fin_util(monthly["siccd"]), ["size_dec", "bm_dec"]] = np.nan
     ours = dd[dd["kept"]].rename(columns={"date": "eventdate", "D": "duration"})
     chx = ch.rename(columns={"date": "eventdate"})
-    out.append(f"\n## Deciles: our exact D vs Chen's (sign {best['denominator sign']}, dER_M "
-               f"{best['dER_M scale']}; ours ex microcaps like his table2 is a later variant)\n")
+    out.append(f"\n## Deciles: our exact D vs Chen's ({best['dER_M source']}, sign "
+               f"{best['denominator sign']}, scale {best['dER_M scale']}; ours ex microcaps like his table2 is a later variant)\n")
     for sort in ("size_dec", "bm_dec"):
         a = cc.chen_portfolio_durations(ours, monthly, sort)
         b = cc.chen_portfolio_durations(chx, monthly, sort)
