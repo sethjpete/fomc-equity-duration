@@ -134,11 +134,14 @@ def portfolio_betas(rets: pd.DataFrame, mkt: pd.Series, me: pd.Series,
 
 # ---------------------------------------------------------------- durations
 
-def durations(ev: pd.DataFrame, er_scale: float = 1.0) -> pd.DataFrame:
+def durations(ev: pd.DataFrame, er_scale: float = 1.0, sign: int = 1) -> pd.DataFrame:
     """ev: [permno, date, ret, beta, der_m, drf]. dER_M is multiplied by `er_scale`
-    (1 = daily units as estimated, 252 = annualized). Adds denom, D, kept."""
+    (1 = daily units as estimated, 252 = annualized). sign = -1 flips the denominator, i.e.
+    discount-rate changes measured as decreases (his Table 1 reports dER as positive
+    "decreases" while the mean event return is positive). Adds denom, D, kept."""
     out = ev.copy()
-    out["denom"] = out["beta"] * out["der_m"] * er_scale + (1 - out["beta"]) * out["drf"]
+    out["denom"] = sign * (out["beta"] * out["der_m"] * er_scale
+                           + (1 - out["beta"]) * out["drf"])
     with np.errstate(invalid="ignore", divide="ignore"):
         out["D"] = SCALE_40MIN * -out["ret"] / out["denom"]
     out["kept"] = out["D"].between(LO, HI)

@@ -20,7 +20,8 @@ from fomcdur.replication import chen_compare as cc
 from fomcdur.replication import chen_exact as cx
 from fomcdur.replication import intraday
 
-ER_SCALES = {"daily": 1.0, "annualized": 252.0}
+ER_SCALES = {"x1 (daily)": 1.0, "x5": 5.0, "x10": 10.0, "x20": 20.0, "x252 (annual)": 252.0}
+SIGNS = {"as written": 1, "flipped": -1}
 CRSP_COLS = ["permno", "date", "ret", "prc", "shrout", "exchcd", "siccd", "shrcd"]
 
 
@@ -120,25 +121,24 @@ def main() -> None:
 
     out.append("\n## Stock-level match with Chen's posted estimates (same announcements)\n")
     rows, kept_frames = [], {}
-    for lab, sc in ER_SCALES.items():
-        for micro in (False, True):
-            dd = cx.durations(base, sc)
-            if micro:
-                dd = dd[~dd["micro"].fillna(True)]
+    for slab, sg in SIGNS.items():
+        for lab, sc in ER_SCALES.items():
+            dd = cx.durations(base, sc, sg)
             k = dd[dd["kept"]]
             m = k.merge(ch, on=["permno", "date"], how="outer", indicator=True)
             both = m[m["_merge"] == "both"]
             rows.append({
-                "dER_M units": lab, "ex microcaps": micro,
+                "denominator sign": slab, "dER_M scale": lab,
                 "our stock-events": len(dd), "ours kept": len(k), "Chen's": len(ch),
                 "matched": len(both),
                 "share of Chen's matched": len(both) / max(len(ch), 1),
+                "share of ours kept in Chen": len(both) / max(len(k), 1),
                 "corr(log D)": np.log(both["D"]).corr(np.log(both["duration"])),
                 "Spearman": both["D"].rank().corr(both["duration"].rank()),
                 "median D ours / Chen": float((both["D"] / both["duration"]).median()),
                 "mean D ours": k["D"].mean(), "mean D Chen": ch["duration"].mean(),
             })
-            kept_frames[(lab, micro)] = dd
+            kept_frames[(slab, lab)] = dd
     out.append(pd.DataFrame(rows).to_markdown(index=False, floatfmt=".3g"))
     out.append(f"\nChen's table2 file (his main sample) has "
                f"{sum(1 for p, d in in_t2 if d in set(ev['date']))} of these stock-events.")
@@ -156,8 +156,13 @@ def main() -> None:
     out.append(imp.to_markdown(floatfmt=".3g"))
 
     # Deciles with the exact D (better-matching units)
-    best = max(rows, key=lambda r: (r["corr(log D)"] if pd.notna(r["corr(log D)"]) else -9))
-    dd = kept_frames[(best["dER_M units"], best["ex microcaps"])]
+    # Best variant: the one whose kept set overlaps Chen's most (F1 of the two match shares)
+    def f1(r):
+        a, b = r["share of Chen's matched"], r["share of ours kept in Chen"]
+        return 2 * a * b / (a + b) if a + b > 0 else 0
+
+    best = max(rows, key=f1)
+    dd = kept_frames[(best["denominator sign"], best["dER_M scale"])]
     monthly, _ = cc.load_panels(pd.DatetimeIndex(ev["date"]),
                                 list(range(ev["date"].min().year - 1,
                                            ev["date"].max().year + 1)))
@@ -170,8 +175,8 @@ def main() -> None:
     monthly.loc[cc.is_fin_util(monthly["siccd"]), ["size_dec", "bm_dec"]] = np.nan
     ours = dd[dd["kept"]].rename(columns={"date": "eventdate", "D": "duration"})
     chx = ch.rename(columns={"date": "eventdate"})
-    out.append(f"\n## Deciles: our exact D vs Chen's (dER_M {best['dER_M units']}, ex microcaps "
-               f"{best['ex microcaps']})\n")
+    out.append(f"\n## Deciles: our exact D vs Chen's (sign {best['denominator sign']}, dER_M "
+               f"{best['dER_M scale']}; ours ex microcaps like his table2 is a later variant)\n")
     for sort in ("size_dec", "bm_dec"):
         a = cc.chen_portfolio_durations(ours, monthly, sort)
         b = cc.chen_portfolio_durations(chx, monthly, sort)
