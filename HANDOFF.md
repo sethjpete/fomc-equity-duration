@@ -18,6 +18,9 @@ catch up.
   size, B/M, profitability and leverage deciles, each with the robustness set. Industry
   durations are reliable (split-half 0.79, equal-duration test rejected); characteristic
   deciles are flat except size. Numbers in ROADMAP M3.
+- **M4 first pass done** (`make horizons`, ~75 s): D(h) anchored at the pre-announcement
+  TAQ price (Seth approved). Same-day share for the market ~0.35-0.4; the B/M spread and
+  a size reversal build after the 40-minute window. Numbers in ROADMAP M4.
 - **Next:** M3 step 2, the industry-portfolio panel (duration on lagged VW characteristics),
   then the out-of-sample fitted durations and quintile check.
 - The script runs in ~25 s from the raw files (TAQ midpoints, CRSP 2003-2023, Compustat).

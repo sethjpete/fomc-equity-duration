@@ -1,0 +1,1387 @@
+h,D,se,n,portfolio,spec
+0,5.1617,0.8476,162,MKT,no controls
+0c,6.2019,2.1632,162,MKT,no controls
+1,11.1757,2.7768,162,MKT,no controls
+2,9.8865,3.4940,162,MKT,no controls
+3,9.8815,3.9582,162,MKT,no controls
+4,7.4544,4.3233,162,MKT,no controls
+5,3.5973,3.9451,162,MKT,no controls
+6,5.6720,4.8124,162,MKT,no controls
+7,5.6513,5.1723,162,MKT,no controls
+8,5.1521,5.0275,162,MKT,no controls
+9,8.0719,5.1337,162,MKT,no controls
+10,7.8868,4.7295,162,MKT,no controls
+11,11.9587,4.6726,162,MKT,no controls
+12,12.8069,5.1516,162,MKT,no controls
+13,13.0256,5.9133,162,MKT,no controls
+14,13.3115,5.6853,162,MKT,no controls
+15,14.6074,6.6160,162,MKT,no controls
+16,15.3635,7.1486,162,MKT,no controls
+17,17.1629,8.6792,162,MKT,no controls
+18,18.4215,8.3195,162,MKT,no controls
+19,12.6604,7.6297,162,MKT,no controls
+20,13.3458,7.8764,162,MKT,no controls
+0,5.1617,0.8476,162,MKT,yield controls
+0c,6.2019,2.1632,162,MKT,yield controls
+1,11.6049,3.1732,161,MKT,yield controls
+2,9.4806,3.7391,161,MKT,yield controls
+3,9.8929,3.9584,162,MKT,yield controls
+4,7.3057,4.3848,161,MKT,yield controls
+5,2.3384,4.4597,161,MKT,yield controls
+6,6.2777,5.2451,160,MKT,yield controls
+7,6.6872,5.1878,159,MKT,yield controls
+8,7.9239,4.8885,157,MKT,yield controls
+9,10.3663,4.6097,160,MKT,yield controls
+10,11.4357,4.4473,160,MKT,yield controls
+11,13.0365,4.1143,161,MKT,yield controls
+12,13.8189,4.4746,162,MKT,yield controls
+13,11.3136,4.9776,154,MKT,yield controls
+14,13.0060,5.3165,158,MKT,yield controls
+15,14.3604,5.3505,162,MKT,yield controls
+16,17.2787,6.2148,162,MKT,yield controls
+17,18.7682,7.5788,160,MKT,yield controls
+18,18.8016,6.8409,158,MKT,yield controls
+19,11.8456,6.0287,160,MKT,yield controls
+20,15.4427,7.5993,162,MKT,yield controls
+0,1.7552,0.4860,162,Size 10-1,no controls
+0c,-0.9480,1.0139,162,Size 10-1,no controls
+1,-5.2258,2.1680,162,Size 10-1,no controls
+2,-3.2205,2.6477,162,Size 10-1,no controls
+3,-5.1624,3.1267,162,Size 10-1,no controls
+4,-4.3162,3.2516,162,Size 10-1,no controls
+5,-2.7518,3.6757,162,Size 10-1,no controls
+6,-4.3848,3.9099,162,Size 10-1,no controls
+7,-5.4765,3.7475,162,Size 10-1,no controls
+8,-5.7635,4.3865,162,Size 10-1,no controls
+9,-6.4735,4.5176,162,Size 10-1,no controls
+10,-9.8852,4.3557,162,Size 10-1,no controls
+11,-10.1292,4.6275,162,Size 10-1,no controls
+12,-12.6816,5.6832,162,Size 10-1,no controls
+13,-16.6085,7.7797,162,Size 10-1,no controls
+14,-15.9207,7.8823,162,Size 10-1,no controls
+15,-17.5433,8.9650,162,Size 10-1,no controls
+16,-19.7430,8.2668,162,Size 10-1,no controls
+17,-16.9398,7.7485,162,Size 10-1,no controls
+18,-16.7967,7.4564,162,Size 10-1,no controls
+19,-14.8760,7.5059,162,Size 10-1,no controls
+20,-14.9233,7.7535,162,Size 10-1,no controls
+0,1.7552,0.4860,162,Size 10-1,yields
+0c,-0.9480,1.0139,162,Size 10-1,yields
+1,-5.5539,2.4503,161,Size 10-1,yields
+2,-3.3529,2.9081,161,Size 10-1,yields
+3,-6.4423,3.4187,162,Size 10-1,yields
+4,-4.9792,3.3600,161,Size 10-1,yields
+5,-4.0341,3.9100,161,Size 10-1,yields
+6,-7.2990,4.1565,160,Size 10-1,yields
+7,-9.6208,3.8495,159,Size 10-1,yields
+8,-9.3875,4.2430,157,Size 10-1,yields
+9,-10.0187,4.2497,160,Size 10-1,yields
+10,-12.8903,4.3611,160,Size 10-1,yields
+11,-12.7208,4.4234,161,Size 10-1,yields
+12,-15.1446,5.3065,162,Size 10-1,yields
+13,-17.7697,7.7705,154,Size 10-1,yields
+14,-19.5387,7.6608,158,Size 10-1,yields
+15,-20.8269,8.3744,162,Size 10-1,yields
+16,-24.6913,8.1763,162,Size 10-1,yields
+17,-23.7974,8.1448,160,Size 10-1,yields
+18,-21.5519,8.3466,158,Size 10-1,yields
+19,-19.8042,8.6029,160,Size 10-1,yields
+20,-22.2534,8.8638,162,Size 10-1,yields
+0,1.7552,0.4860,162,Size 10-1,yields + FF5 + Mom
+0c,-0.9480,1.0139,162,Size 10-1,yields + FF5 + Mom
+1,-0.0722,1.4217,161,Size 10-1,yields + FF5 + Mom
+2,0.1835,1.7677,161,Size 10-1,yields + FF5 + Mom
+3,-1.5739,1.7297,162,Size 10-1,yields + FF5 + Mom
+4,-2.6061,1.9375,161,Size 10-1,yields + FF5 + Mom
+5,-3.9355,2.4765,161,Size 10-1,yields + FF5 + Mom
+6,-3.1794,2.6302,160,Size 10-1,yields + FF5 + Mom
+7,-3.8390,2.6695,159,Size 10-1,yields + FF5 + Mom
+8,-2.9915,2.6675,157,Size 10-1,yields + FF5 + Mom
+9,-6.0762,3.5587,160,Size 10-1,yields + FF5 + Mom
+10,-5.0018,3.4286,160,Size 10-1,yields + FF5 + Mom
+11,-6.3950,2.9716,161,Size 10-1,yields + FF5 + Mom
+12,-8.3803,2.8931,162,Size 10-1,yields + FF5 + Mom
+13,-8.9440,3.5245,154,Size 10-1,yields + FF5 + Mom
+14,-9.5769,4.0675,158,Size 10-1,yields + FF5 + Mom
+15,-9.0833,3.9161,162,Size 10-1,yields + FF5 + Mom
+16,-9.3970,4.0259,162,Size 10-1,yields + FF5 + Mom
+17,-8.7279,3.9737,160,Size 10-1,yields + FF5 + Mom
+18,-8.0666,3.9297,158,Size 10-1,yields + FF5 + Mom
+19,-9.5225,4.1299,160,Size 10-1,yields + FF5 + Mom
+20,-9.8987,4.2076,162,Size 10-1,yields + FF5 + Mom
+0,0.4379,0.7113,162,B/M 10-1,no controls
+0c,4.4390,1.6914,162,B/M 10-1,no controls
+1,7.9418,3.0504,162,B/M 10-1,no controls
+2,7.4323,3.2948,162,B/M 10-1,no controls
+3,11.8626,5.7951,162,B/M 10-1,no controls
+4,7.7198,4.3515,162,B/M 10-1,no controls
+5,5.9349,4.6634,162,B/M 10-1,no controls
+6,6.2011,5.5702,162,B/M 10-1,no controls
+7,4.9071,5.2768,162,B/M 10-1,no controls
+8,4.1887,4.6772,162,B/M 10-1,no controls
+9,5.8861,4.9110,162,B/M 10-1,no controls
+10,9.5183,6.0374,162,B/M 10-1,no controls
+11,14.8022,7.8779,162,B/M 10-1,no controls
+12,21.9068,10.8002,162,B/M 10-1,no controls
+13,28.0001,15.0256,162,B/M 10-1,no controls
+14,23.7938,13.6876,162,B/M 10-1,no controls
+15,28.7555,16.1355,162,B/M 10-1,no controls
+16,30.3105,15.7287,162,B/M 10-1,no controls
+17,24.4133,14.0192,162,B/M 10-1,no controls
+18,26.5829,13.3545,162,B/M 10-1,no controls
+19,23.3438,12.6917,162,B/M 10-1,no controls
+20,21.0482,13.4306,162,B/M 10-1,no controls
+0,0.4379,0.7113,162,B/M 10-1,yields
+0c,4.4390,1.6914,162,B/M 10-1,yields
+1,9.1412,3.5168,161,B/M 10-1,yields
+2,9.3279,3.9963,161,B/M 10-1,yields
+3,14.7966,6.8783,162,B/M 10-1,yields
+4,10.1283,5.2514,161,B/M 10-1,yields
+5,8.9294,5.7006,161,B/M 10-1,yields
+6,10.3194,6.7755,160,B/M 10-1,yields
+7,9.2584,6.8346,159,B/M 10-1,yields
+8,8.2788,5.5265,157,B/M 10-1,yields
+9,11.3668,5.8269,160,B/M 10-1,yields
+10,13.7472,6.9617,160,B/M 10-1,yields
+11,18.3346,8.2842,161,B/M 10-1,yields
+12,25.6727,10.5907,162,B/M 10-1,yields
+13,30.6538,15.7594,154,B/M 10-1,yields
+14,32.4742,13.2499,158,B/M 10-1,yields
+15,33.7354,15.9657,162,B/M 10-1,yields
+16,37.9677,16.2674,162,B/M 10-1,yields
+17,32.1449,15.8712,160,B/M 10-1,yields
+18,33.9280,15.1412,158,B/M 10-1,yields
+19,30.1500,14.7935,160,B/M 10-1,yields
+20,31.8864,16.2228,162,B/M 10-1,yields
+0,0.4379,0.7113,162,B/M 10-1,yields + FF5 + Mom
+0c,4.4390,1.6914,162,B/M 10-1,yields + FF5 + Mom
+1,5.4837,2.6365,161,B/M 10-1,yields + FF5 + Mom
+2,8.6559,3.3989,161,B/M 10-1,yields + FF5 + Mom
+3,11.1218,4.7558,162,B/M 10-1,yields + FF5 + Mom
+4,9.6213,4.7083,161,B/M 10-1,yields + FF5 + Mom
+5,10.0236,4.7542,161,B/M 10-1,yields + FF5 + Mom
+6,7.1581,4.9840,160,B/M 10-1,yields + FF5 + Mom
+7,7.3444,5.3943,159,B/M 10-1,yields + FF5 + Mom
+8,5.0831,4.7476,157,B/M 10-1,yields + FF5 + Mom
+9,8.5501,5.0528,160,B/M 10-1,yields + FF5 + Mom
+10,8.0961,5.2254,160,B/M 10-1,yields + FF5 + Mom
+11,11.7232,5.0554,161,B/M 10-1,yields + FF5 + Mom
+12,17.1276,5.4628,162,B/M 10-1,yields + FF5 + Mom
+13,18.7567,6.3632,154,B/M 10-1,yields + FF5 + Mom
+14,18.7598,6.5636,158,B/M 10-1,yields + FF5 + Mom
+15,18.9972,6.6151,162,B/M 10-1,yields + FF5 + Mom
+16,20.1083,6.0201,162,B/M 10-1,yields + FF5 + Mom
+17,19.1623,6.2963,160,B/M 10-1,yields + FF5 + Mom
+18,19.8093,6.5402,158,B/M 10-1,yields + FF5 + Mom
+19,19.8984,7.3684,160,B/M 10-1,yields + FF5 + Mom
+20,21.7674,7.4340,162,B/M 10-1,yields + FF5 + Mom
+0,-0.1569,0.5081,162,Profitability 10-1,no controls
+0c,-1.0697,1.0560,162,Profitability 10-1,no controls
+1,-6.3054,2.7833,162,Profitability 10-1,no controls
+2,-2.4155,3.6314,162,Profitability 10-1,no controls
+3,-1.6556,4.1510,162,Profitability 10-1,no controls
+4,0.0463,4.4057,162,Profitability 10-1,no controls
+5,2.2429,4.7993,162,Profitability 10-1,no controls
+6,1.7459,5.0608,162,Profitability 10-1,no controls
+7,1.4666,4.6070,162,Profitability 10-1,no controls
+8,0.4809,5.0964,162,Profitability 10-1,no controls
+9,0.3605,5.3139,162,Profitability 10-1,no controls
+10,-0.8818,5.1740,162,Profitability 10-1,no controls
+11,0.6571,5.1410,162,Profitability 10-1,no controls
+12,-0.8001,5.4973,162,Profitability 10-1,no controls
+13,-2.3746,5.9616,162,Profitability 10-1,no controls
+14,-4.3450,5.8031,162,Profitability 10-1,no controls
+15,-5.9932,5.4994,162,Profitability 10-1,no controls
+16,-8.5158,5.4696,162,Profitability 10-1,no controls
+17,-8.8949,6.0343,162,Profitability 10-1,no controls
+18,-8.0800,5.8238,162,Profitability 10-1,no controls
+19,-7.1076,5.6587,162,Profitability 10-1,no controls
+20,-8.0600,5.9383,162,Profitability 10-1,no controls
+0,-0.1569,0.5081,162,Profitability 10-1,yields
+0c,-1.0697,1.0560,162,Profitability 10-1,yields
+1,-6.3103,3.0295,161,Profitability 10-1,yields
+2,-1.6308,3.7905,161,Profitability 10-1,yields
+3,-1.1472,4.1160,162,Profitability 10-1,yields
+4,-0.2396,4.7258,161,Profitability 10-1,yields
+5,1.9605,5.1988,161,Profitability 10-1,yields
+6,0.2151,5.1023,160,Profitability 10-1,yields
+7,-1.1880,4.4156,159,Profitability 10-1,yields
+8,-3.4765,4.7640,157,Profitability 10-1,yields
+9,-1.9633,5.1356,160,Profitability 10-1,yields
+10,-5.0008,4.9321,160,Profitability 10-1,yields
+11,-1.6109,4.9603,161,Profitability 10-1,yields
+12,-2.3201,5.0777,162,Profitability 10-1,yields
+13,-1.0033,5.5952,154,Profitability 10-1,yields
+14,-5.1077,5.6682,158,Profitability 10-1,yields
+15,-7.1886,4.9001,162,Profitability 10-1,yields
+16,-11.1501,5.1860,162,Profitability 10-1,yields
+17,-13.4919,5.6123,160,Profitability 10-1,yields
+18,-9.7547,5.4794,158,Profitability 10-1,yields
+19,-9.3583,5.4385,160,Profitability 10-1,yields
+20,-10.9514,5.7485,162,Profitability 10-1,yields
+0,-0.1569,0.5081,162,Profitability 10-1,yields + FF5 + Mom
+0c,-1.0697,1.0560,162,Profitability 10-1,yields + FF5 + Mom
+1,-1.1597,1.8017,161,Profitability 10-1,yields + FF5 + Mom
+2,-0.6515,2.0532,161,Profitability 10-1,yields + FF5 + Mom
+3,-1.6512,2.2038,162,Profitability 10-1,yields + FF5 + Mom
+4,-1.0061,2.5673,161,Profitability 10-1,yields + FF5 + Mom
+5,0.1898,2.7961,161,Profitability 10-1,yields + FF5 + Mom
+6,-0.0437,2.9696,160,Profitability 10-1,yields + FF5 + Mom
+7,1.7313,2.8464,159,Profitability 10-1,yields + FF5 + Mom
+8,-0.1786,2.9246,157,Profitability 10-1,yields + FF5 + Mom
+9,-0.6651,3.1772,160,Profitability 10-1,yields + FF5 + Mom
+10,-0.5902,3.2553,160,Profitability 10-1,yields + FF5 + Mom
+11,-1.5143,3.3066,161,Profitability 10-1,yields + FF5 + Mom
+12,-2.4683,3.3009,162,Profitability 10-1,yields + FF5 + Mom
+13,-1.6432,3.6065,154,Profitability 10-1,yields + FF5 + Mom
+14,-4.8336,3.8070,158,Profitability 10-1,yields + FF5 + Mom
+15,-3.6423,3.8055,162,Profitability 10-1,yields + FF5 + Mom
+16,-4.2916,3.6930,162,Profitability 10-1,yields + FF5 + Mom
+17,-4.1572,3.8966,160,Profitability 10-1,yields + FF5 + Mom
+18,-3.2111,4.0514,158,Profitability 10-1,yields + FF5 + Mom
+19,-4.0414,4.0027,160,Profitability 10-1,yields + FF5 + Mom
+20,-3.4957,3.9348,162,Profitability 10-1,yields + FF5 + Mom
+0,-0.3256,0.4014,162,Leverage 10-1,no controls
+0c,0.6420,0.8221,162,Leverage 10-1,no controls
+1,-0.7758,1.6901,162,Leverage 10-1,no controls
+2,-1.2265,2.2928,162,Leverage 10-1,no controls
+3,-0.2163,2.4583,162,Leverage 10-1,no controls
+4,0.1711,2.9916,162,Leverage 10-1,no controls
+5,2.4412,2.9845,162,Leverage 10-1,no controls
+6,0.2798,2.8420,162,Leverage 10-1,no controls
+7,-1.3613,2.8305,162,Leverage 10-1,no controls
+8,-1.7245,2.7491,162,Leverage 10-1,no controls
+9,-1.9392,3.0441,162,Leverage 10-1,no controls
+10,-2.5156,2.8514,162,Leverage 10-1,no controls
+11,-2.6455,2.9481,162,Leverage 10-1,no controls
+12,-1.8752,2.8935,162,Leverage 10-1,no controls
+13,-1.1723,3.5318,162,Leverage 10-1,no controls
+14,-3.3048,3.6911,162,Leverage 10-1,no controls
+15,-3.5483,3.6029,162,Leverage 10-1,no controls
+16,-1.9806,3.8617,162,Leverage 10-1,no controls
+17,-2.2971,3.9018,162,Leverage 10-1,no controls
+18,-5.0710,3.9322,162,Leverage 10-1,no controls
+19,-3.7432,4.2884,162,Leverage 10-1,no controls
+20,-6.4307,4.4797,162,Leverage 10-1,no controls
+0,-0.3256,0.4014,162,Leverage 10-1,yields
+0c,0.6420,0.8221,162,Leverage 10-1,yields
+1,-1.1983,1.6746,161,Leverage 10-1,yields
+2,-0.2124,2.1577,161,Leverage 10-1,yields
+3,0.8403,2.5056,162,Leverage 10-1,yields
+4,0.7411,3.0545,161,Leverage 10-1,yields
+5,3.0219,3.3152,161,Leverage 10-1,yields
+6,0.8057,3.0919,160,Leverage 10-1,yields
+7,-1.5603,3.2307,159,Leverage 10-1,yields
+8,-2.7365,2.8193,157,Leverage 10-1,yields
+9,-2.6488,2.9952,160,Leverage 10-1,yields
+10,-3.7364,2.9395,160,Leverage 10-1,yields
+11,-2.9493,3.0266,161,Leverage 10-1,yields
+12,-2.2511,2.9293,162,Leverage 10-1,yields
+13,-0.3659,3.7064,154,Leverage 10-1,yields
+14,-1.4409,3.6190,158,Leverage 10-1,yields
+15,-3.2204,3.7374,162,Leverage 10-1,yields
+16,-1.3084,3.9369,162,Leverage 10-1,yields
+17,-0.8317,4.1609,160,Leverage 10-1,yields
+18,-2.8114,4.0545,158,Leverage 10-1,yields
+19,-3.9398,4.1146,160,Leverage 10-1,yields
+20,-5.6029,4.6135,162,Leverage 10-1,yields
+0,-0.3256,0.4014,162,Leverage 10-1,yields + FF5 + Mom
+0c,0.6420,0.8221,162,Leverage 10-1,yields + FF5 + Mom
+1,-0.2319,1.6968,161,Leverage 10-1,yields + FF5 + Mom
+2,-0.4083,1.7500,161,Leverage 10-1,yields + FF5 + Mom
+3,0.8668,1.9897,162,Leverage 10-1,yields + FF5 + Mom
+4,0.8966,2.4211,161,Leverage 10-1,yields + FF5 + Mom
+5,1.5167,2.4595,161,Leverage 10-1,yields + FF5 + Mom
+6,-0.4801,2.4726,160,Leverage 10-1,yields + FF5 + Mom
+7,-0.4627,2.8162,159,Leverage 10-1,yields + FF5 + Mom
+8,-1.2071,2.5584,157,Leverage 10-1,yields + FF5 + Mom
+9,-1.9949,2.6161,160,Leverage 10-1,yields + FF5 + Mom
+10,-3.1768,2.8816,160,Leverage 10-1,yields + FF5 + Mom
+11,-2.8606,3.1815,161,Leverage 10-1,yields + FF5 + Mom
+12,-2.6173,2.9576,162,Leverage 10-1,yields + FF5 + Mom
+13,0.0823,3.5458,154,Leverage 10-1,yields + FF5 + Mom
+14,-1.7520,3.7699,158,Leverage 10-1,yields + FF5 + Mom
+15,-2.9170,3.7519,162,Leverage 10-1,yields + FF5 + Mom
+16,0.2914,4.1202,162,Leverage 10-1,yields + FF5 + Mom
+17,2.2807,3.9710,160,Leverage 10-1,yields + FF5 + Mom
+18,-1.4249,3.7504,158,Leverage 10-1,yields + FF5 + Mom
+19,-2.5615,3.4243,160,Leverage 10-1,yields + FF5 + Mom
+20,-3.0118,3.5950,162,Leverage 10-1,yields + FF5 + Mom
+0,3.5850,0.7021,162,ind1,no controls
+0c,7.0840,2.1617,162,ind1,no controls
+1,11.3730,3.8273,162,ind1,no controls
+2,12.5496,5.3645,162,ind1,no controls
+3,15.6955,6.7419,162,ind1,no controls
+4,11.1885,7.2791,162,ind1,no controls
+5,9.9396,7.5516,162,ind1,no controls
+6,13.8611,8.1485,162,ind1,no controls
+7,10.0530,8.8345,162,ind1,no controls
+8,9.8269,7.5665,162,ind1,no controls
+9,15.8757,8.1335,162,ind1,no controls
+10,18.1937,9.7305,162,ind1,no controls
+11,22.8855,10.2962,162,ind1,no controls
+12,23.8540,10.8650,162,ind1,no controls
+13,25.9008,11.9178,162,ind1,no controls
+14,23.9149,9.2294,162,ind1,no controls
+15,25.0018,10.3709,162,ind1,no controls
+16,25.2451,10.3344,162,ind1,no controls
+17,25.3923,9.6007,162,ind1,no controls
+18,31.6658,9.8524,162,ind1,no controls
+19,24.7569,8.8569,162,ind1,no controls
+20,24.4600,9.4773,162,ind1,no controls
+0,3.8358,0.6262,162,ind2,no controls
+0c,4.5754,1.3283,162,ind2,no controls
+1,6.0136,1.7600,162,ind2,no controls
+2,8.2464,2.0268,162,ind2,no controls
+3,8.3949,2.6814,162,ind2,no controls
+4,7.2008,3.1231,162,ind2,no controls
+5,3.1329,3.0262,162,ind2,no controls
+6,3.5427,3.2856,162,ind2,no controls
+7,3.1477,3.9701,162,ind2,no controls
+8,3.2778,3.6702,162,ind2,no controls
+9,5.3639,3.6638,162,ind2,no controls
+10,6.4611,3.7734,162,ind2,no controls
+11,9.4538,4.5270,162,ind2,no controls
+12,10.2953,4.8577,162,ind2,no controls
+13,10.5653,4.5577,162,ind2,no controls
+14,10.0008,4.6203,162,ind2,no controls
+15,9.2190,5.0781,162,ind2,no controls
+16,10.0130,5.8679,162,ind2,no controls
+17,12.4990,6.7791,162,ind2,no controls
+18,14.0917,6.9444,162,ind2,no controls
+19,8.7723,6.1612,162,ind2,no controls
+20,10.1765,6.4217,162,ind2,no controls
+0,4.0648,0.5924,162,ind3,no controls
+0c,4.6909,1.4121,162,ind3,no controls
+1,6.2162,1.8344,162,ind3,no controls
+2,7.0214,2.0341,162,ind3,no controls
+3,7.0640,2.5748,162,ind3,no controls
+4,6.8158,3.1529,162,ind3,no controls
+5,4.8531,3.3524,162,ind3,no controls
+6,6.1656,3.7921,162,ind3,no controls
+7,6.7005,4.1278,162,ind3,no controls
+8,6.1914,4.2937,162,ind3,no controls
+9,7.9876,4.7524,162,ind3,no controls
+10,7.9198,4.6553,162,ind3,no controls
+11,10.9995,5.1455,162,ind3,no controls
+12,10.4668,5.3130,162,ind3,no controls
+13,11.0713,5.4754,162,ind3,no controls
+14,10.6345,5.7967,162,ind3,no controls
+15,8.9051,6.0943,162,ind3,no controls
+16,10.0956,6.9860,162,ind3,no controls
+17,11.0292,8.2085,162,ind3,no controls
+18,12.5718,8.2738,162,ind3,no controls
+19,7.3815,7.8993,162,ind3,no controls
+20,11.5679,9.0409,162,ind3,no controls
+0,4.2099,0.9094,162,ind4,no controls
+0c,6.2977,1.9021,162,ind4,no controls
+1,9.9068,2.3671,162,ind4,no controls
+2,11.8162,2.8539,162,ind4,no controls
+3,11.1516,2.9323,162,ind4,no controls
+4,9.5937,3.7405,162,ind4,no controls
+5,7.1320,3.6288,162,ind4,no controls
+6,10.4595,4.0586,162,ind4,no controls
+7,10.0121,4.8932,162,ind4,no controls
+8,10.6367,4.9514,162,ind4,no controls
+9,13.0586,4.8955,162,ind4,no controls
+10,15.4312,4.6893,162,ind4,no controls
+11,21.9015,5.5239,162,ind4,no controls
+12,24.4296,6.1007,162,ind4,no controls
+13,26.8659,6.6214,162,ind4,no controls
+14,24.8816,7.3996,162,ind4,no controls
+15,22.7611,7.9873,162,ind4,no controls
+16,24.5887,9.1700,162,ind4,no controls
+17,25.6454,9.3500,162,ind4,no controls
+18,25.8626,9.7099,162,ind4,no controls
+19,20.2041,8.9716,162,ind4,no controls
+20,23.0591,9.4696,162,ind4,no controls
+0,4.2032,0.8963,162,ind5,no controls
+0c,4.6888,1.4061,162,ind5,no controls
+1,8.8974,2.5459,162,ind5,no controls
+2,11.5161,2.7269,162,ind5,no controls
+3,11.8273,3.0102,162,ind5,no controls
+4,13.6397,3.7546,162,ind5,no controls
+5,10.8523,3.8092,162,ind5,no controls
+6,11.3981,4.1389,162,ind5,no controls
+7,12.0405,5.0044,162,ind5,no controls
+8,14.8377,4.8673,162,ind5,no controls
+9,17.0513,5.1973,162,ind5,no controls
+10,15.4405,4.9846,162,ind5,no controls
+11,17.3365,5.3161,162,ind5,no controls
+12,18.4422,6.0875,162,ind5,no controls
+13,17.3373,5.6567,162,ind5,no controls
+14,18.0291,5.7077,162,ind5,no controls
+15,17.7061,6.6871,162,ind5,no controls
+16,18.3159,7.3593,162,ind5,no controls
+17,20.1410,8.3533,162,ind5,no controls
+18,22.6038,8.3092,162,ind5,no controls
+19,18.5897,7.0661,162,ind5,no controls
+20,20.7433,7.8032,162,ind5,no controls
+0,4.8922,0.8274,162,ind6,no controls
+0c,6.7241,2.0127,162,ind6,no controls
+1,15.2314,3.2298,162,ind6,no controls
+2,15.1308,4.1207,162,ind6,no controls
+3,13.8622,4.7821,162,ind6,no controls
+4,11.0819,5.4776,162,ind6,no controls
+5,9.3612,4.9583,162,ind6,no controls
+6,14.3101,5.5637,162,ind6,no controls
+7,14.3985,5.9838,162,ind6,no controls
+8,13.9105,5.6512,162,ind6,no controls
+9,16.6287,5.3506,162,ind6,no controls
+10,16.3966,5.9623,162,ind6,no controls
+11,21.9884,6.7468,162,ind6,no controls
+12,20.1036,7.4419,162,ind6,no controls
+13,19.6424,7.8995,162,ind6,no controls
+14,17.8274,8.1040,162,ind6,no controls
+15,18.1803,8.8169,162,ind6,no controls
+16,21.1861,8.9622,162,ind6,no controls
+17,23.8177,10.6574,162,ind6,no controls
+18,24.0841,9.9269,162,ind6,no controls
+19,19.4131,9.8806,162,ind6,no controls
+20,23.0460,9.9640,162,ind6,no controls
+0,4.9832,0.8873,162,ind7,no controls
+0c,5.5429,2.4596,162,ind7,no controls
+1,10.4421,4.0714,162,ind7,no controls
+2,9.9760,5.3941,162,ind7,no controls
+3,10.4791,5.8759,162,ind7,no controls
+4,8.1891,6.9065,162,ind7,no controls
+5,1.6212,6.0013,162,ind7,no controls
+6,5.2058,6.3848,162,ind7,no controls
+7,9.0221,6.9715,162,ind7,no controls
+8,7.6093,8.0683,162,ind7,no controls
+9,10.7051,8.1820,162,ind7,no controls
+10,7.7605,8.4073,162,ind7,no controls
+11,11.0933,8.2574,162,ind7,no controls
+12,13.0846,8.1389,162,ind7,no controls
+13,13.2934,9.7531,162,ind7,no controls
+14,14.2496,9.0524,162,ind7,no controls
+15,17.1827,9.8553,162,ind7,no controls
+16,19.0181,10.2232,162,ind7,no controls
+17,18.7105,11.7158,162,ind7,no controls
+18,18.7481,11.9071,162,ind7,no controls
+19,15.4216,11.8664,162,ind7,no controls
+20,13.7108,12.3477,162,ind7,no controls
+0,4.2942,0.8407,162,ind8,no controls
+0c,7.1582,3.0415,162,ind8,no controls
+1,10.9574,3.7807,162,ind8,no controls
+2,8.7001,4.2896,162,ind8,no controls
+3,12.1764,5.0141,162,ind8,no controls
+4,10.6274,4.7305,162,ind8,no controls
+5,2.6428,3.9808,162,ind8,no controls
+6,6.3189,4.9536,162,ind8,no controls
+7,5.6824,5.5594,162,ind8,no controls
+8,5.2760,5.1631,162,ind8,no controls
+9,7.8139,6.2258,162,ind8,no controls
+10,8.1987,7.2575,162,ind8,no controls
+11,17.3944,9.1400,162,ind8,no controls
+12,16.8139,9.5225,162,ind8,no controls
+13,18.8152,11.5708,162,ind8,no controls
+14,14.1680,9.3505,162,ind8,no controls
+15,13.5377,10.2230,162,ind8,no controls
+16,15.6517,10.3272,162,ind8,no controls
+17,16.2866,10.9813,162,ind8,no controls
+18,18.4305,11.1444,162,ind8,no controls
+19,12.1385,9.5638,162,ind8,no controls
+20,12.8229,10.1300,162,ind8,no controls
+0,4.6637,0.5609,162,ind9,no controls
+0c,5.4261,1.6928,162,ind9,no controls
+1,7.5062,2.1755,162,ind9,no controls
+2,8.8515,2.4806,162,ind9,no controls
+3,10.0072,2.6727,162,ind9,no controls
+4,9.8767,3.3959,162,ind9,no controls
+5,6.7637,3.7314,162,ind9,no controls
+6,8.8554,4.4829,162,ind9,no controls
+7,9.1071,4.7944,162,ind9,no controls
+8,7.6083,4.4224,162,ind9,no controls
+9,8.9728,4.6934,162,ind9,no controls
+10,9.6118,4.7450,162,ind9,no controls
+11,12.6564,5.1303,162,ind9,no controls
+12,12.4097,5.4221,162,ind9,no controls
+13,12.4562,5.6819,162,ind9,no controls
+14,12.4640,5.8212,162,ind9,no controls
+15,12.2610,6.2569,162,ind9,no controls
+16,12.0640,6.6991,162,ind9,no controls
+17,14.7997,7.6762,162,ind9,no controls
+18,15.5558,7.7358,162,ind9,no controls
+19,12.2201,7.6992,162,ind9,no controls
+20,13.3857,8.0144,162,ind9,no controls
+0,5.0777,1.0432,162,ind10,no controls
+0c,6.8089,2.4002,162,ind10,no controls
+1,18.2493,3.5002,162,ind10,no controls
+2,18.2115,5.1018,162,ind10,no controls
+3,18.0517,4.7760,162,ind10,no controls
+4,13.6041,4.9201,162,ind10,no controls
+5,6.9124,4.7218,162,ind10,no controls
+6,10.8072,5.3829,162,ind10,no controls
+7,10.7963,7.3717,162,ind10,no controls
+8,8.5289,7.1385,162,ind10,no controls
+9,10.6287,7.3673,162,ind10,no controls
+10,11.8928,7.5602,162,ind10,no controls
+11,18.2790,7.8457,162,ind10,no controls
+12,18.6082,8.7220,162,ind10,no controls
+13,18.3591,9.4338,162,ind10,no controls
+14,17.2425,8.6278,162,ind10,no controls
+15,18.9781,9.5932,162,ind10,no controls
+16,19.3566,10.4166,162,ind10,no controls
+17,20.9537,11.4693,162,ind10,no controls
+18,21.5796,10.5673,162,ind10,no controls
+19,18.6623,11.1296,162,ind10,no controls
+20,21.8669,11.2668,162,ind10,no controls
+0,4.1648,0.6449,162,ind11,no controls
+0c,4.1712,1.7117,162,ind11,no controls
+1,6.9931,2.7622,162,ind11,no controls
+2,7.8693,3.6096,162,ind11,no controls
+3,11.5660,3.9809,162,ind11,no controls
+4,8.3993,3.9166,162,ind11,no controls
+5,3.3766,3.6739,162,ind11,no controls
+6,4.9374,4.0907,162,ind11,no controls
+7,6.0079,5.0183,162,ind11,no controls
+8,5.6177,4.8193,162,ind11,no controls
+9,8.5513,5.5476,162,ind11,no controls
+10,8.8593,4.9543,162,ind11,no controls
+11,10.5183,5.7288,162,ind11,no controls
+12,13.5490,5.4730,162,ind11,no controls
+13,13.3687,5.1544,162,ind11,no controls
+14,15.6341,5.5082,162,ind11,no controls
+15,18.3462,6.3147,162,ind11,no controls
+16,19.2690,6.6957,162,ind11,no controls
+17,18.6903,8.1717,162,ind11,no controls
+18,19.8542,8.1684,162,ind11,no controls
+19,13.7624,7.2481,162,ind11,no controls
+20,12.7331,7.1342,162,ind11,no controls
+0,4.3517,0.6299,162,ind12,no controls
+0c,5.4965,1.8494,162,ind12,no controls
+1,7.6562,2.6700,162,ind12,no controls
+2,7.2025,2.8842,162,ind12,no controls
+3,7.9837,3.0206,162,ind12,no controls
+4,5.4046,3.2660,162,ind12,no controls
+5,1.6091,3.1634,162,ind12,no controls
+6,3.7165,3.5598,162,ind12,no controls
+7,3.8314,4.1581,162,ind12,no controls
+8,4.3297,4.2883,162,ind12,no controls
+9,6.2170,4.5197,162,ind12,no controls
+10,5.9375,4.6333,162,ind12,no controls
+11,9.1885,4.8165,162,ind12,no controls
+12,9.2863,4.7412,162,ind12,no controls
+13,9.0442,4.6940,162,ind12,no controls
+14,10.9582,5.2741,162,ind12,no controls
+15,13.1256,6.0916,162,ind12,no controls
+16,14.5358,6.7978,162,ind12,no controls
+17,16.8835,7.6332,162,ind12,no controls
+18,18.6039,7.7365,162,ind12,no controls
+19,14.2762,6.4779,162,ind12,no controls
+20,14.7554,6.6879,162,ind12,no controls
+0,4.0442,0.6152,162,ind13,no controls
+0c,4.9482,1.4389,162,ind13,no controls
+1,5.2199,2.2827,162,ind13,no controls
+2,5.6302,2.5484,162,ind13,no controls
+3,7.4256,2.8633,162,ind13,no controls
+4,5.4123,3.0089,162,ind13,no controls
+5,1.0555,3.4495,162,ind13,no controls
+6,0.7548,4.0898,162,ind13,no controls
+7,-0.3509,4.5117,162,ind13,no controls
+8,0.5492,4.1263,162,ind13,no controls
+9,3.0975,4.9118,162,ind13,no controls
+10,3.2980,5.1141,162,ind13,no controls
+11,6.4751,5.3739,162,ind13,no controls
+12,7.0435,5.0803,162,ind13,no controls
+13,8.4174,5.0619,162,ind13,no controls
+14,10.0540,5.2858,162,ind13,no controls
+15,9.4047,6.0610,162,ind13,no controls
+16,8.9732,6.8106,162,ind13,no controls
+17,9.5409,7.3948,162,ind13,no controls
+18,11.1547,7.6719,162,ind13,no controls
+19,7.2519,6.2958,162,ind13,no controls
+20,9.2107,6.2671,162,ind13,no controls
+0,6.1248,0.9959,162,ind14,no controls
+0c,7.8872,2.0798,162,ind14,no controls
+1,15.5556,3.3685,162,ind14,no controls
+2,16.1201,4.4629,162,ind14,no controls
+3,15.2067,5.2731,162,ind14,no controls
+4,11.2183,6.5130,162,ind14,no controls
+5,9.2830,6.3024,162,ind14,no controls
+6,11.9471,7.4996,162,ind14,no controls
+7,12.8319,7.6741,162,ind14,no controls
+8,12.6241,8.8797,162,ind14,no controls
+9,15.4929,8.5513,162,ind14,no controls
+10,13.4325,7.2204,162,ind14,no controls
+11,17.9971,5.9066,162,ind14,no controls
+12,21.7539,7.8359,162,ind14,no controls
+13,22.1252,7.9561,162,ind14,no controls
+14,24.5471,8.4617,162,ind14,no controls
+15,24.6898,9.4242,162,ind14,no controls
+16,24.4986,9.6602,162,ind14,no controls
+17,25.3832,11.1795,162,ind14,no controls
+18,26.0300,11.2569,162,ind14,no controls
+19,18.6110,10.3509,162,ind14,no controls
+20,21.0640,10.3133,162,ind14,no controls
+0,5.1111,0.9580,162,ind15,no controls
+0c,7.1299,2.4025,162,ind15,no controls
+1,5.3594,9.6000,162,ind15,no controls
+2,3.7781,9.7804,162,ind15,no controls
+3,4.9758,10.7594,162,ind15,no controls
+4,5.0881,10.8964,162,ind15,no controls
+5,-0.5234,11.3826,162,ind15,no controls
+6,1.8742,11.0445,162,ind15,no controls
+7,1.3606,10.6731,162,ind15,no controls
+8,-1.0093,11.0508,162,ind15,no controls
+9,1.7240,10.1780,162,ind15,no controls
+10,1.3413,9.2463,162,ind15,no controls
+11,8.0210,7.7288,162,ind15,no controls
+12,9.8383,8.4059,162,ind15,no controls
+13,10.3397,8.3295,162,ind15,no controls
+14,8.9481,10.1802,162,ind15,no controls
+15,11.1205,10.6414,162,ind15,no controls
+16,12.2078,12.5924,162,ind15,no controls
+17,12.4180,15.0198,162,ind15,no controls
+18,11.9549,15.2985,162,ind15,no controls
+19,6.3104,15.5179,162,ind15,no controls
+20,7.5838,16.1907,162,ind15,no controls
+0,6.1770,1.5778,162,ind16,no controls
+0c,9.4438,2.1165,162,ind16,no controls
+1,21.9554,3.7241,162,ind16,no controls
+2,23.7006,5.4125,162,ind16,no controls
+3,22.4959,5.8845,162,ind16,no controls
+4,20.2741,5.7803,162,ind16,no controls
+5,15.6789,6.1458,162,ind16,no controls
+6,18.1088,8.3905,162,ind16,no controls
+7,17.1449,9.1930,162,ind16,no controls
+8,15.2327,8.7193,162,ind16,no controls
+9,17.9771,8.5423,162,ind16,no controls
+10,17.4236,9.1671,162,ind16,no controls
+11,21.2494,10.2419,162,ind16,no controls
+12,22.8479,11.1261,162,ind16,no controls
+13,23.3373,11.6219,162,ind16,no controls
+14,21.8263,10.5515,162,ind16,no controls
+15,23.0920,11.2709,162,ind16,no controls
+16,23.4905,12.0259,162,ind16,no controls
+17,20.4974,12.7750,162,ind16,no controls
+18,21.9416,12.7121,162,ind16,no controls
+19,13.3742,13.7477,162,ind16,no controls
+20,12.6951,14.9110,162,ind16,no controls
+0,6.1803,0.9970,162,ind17,no controls
+0c,9.6727,2.4275,162,ind17,no controls
+1,18.7444,3.5782,162,ind17,no controls
+2,16.3671,4.2718,162,ind17,no controls
+3,16.4101,5.2370,162,ind17,no controls
+4,12.9501,6.1071,162,ind17,no controls
+5,9.1912,6.0294,162,ind17,no controls
+6,11.2454,6.8054,162,ind17,no controls
+7,11.3742,6.9344,162,ind17,no controls
+8,9.9375,6.8920,162,ind17,no controls
+9,12.0441,6.4896,162,ind17,no controls
+10,12.0501,6.1416,162,ind17,no controls
+11,18.0547,6.2466,162,ind17,no controls
+12,20.7436,6.7096,162,ind17,no controls
+13,22.8987,7.5446,162,ind17,no controls
+14,20.7552,6.9566,162,ind17,no controls
+15,21.9686,8.2095,162,ind17,no controls
+16,24.1990,9.2289,162,ind17,no controls
+17,25.0564,10.4616,162,ind17,no controls
+18,26.1334,10.3676,162,ind17,no controls
+19,18.9812,10.9724,162,ind17,no controls
+20,20.7567,10.7978,162,ind17,no controls
+0,8.6177,1.4536,162,ind18,no controls
+0c,12.4092,2.8940,162,ind18,no controls
+1,24.2604,4.3206,162,ind18,no controls
+2,19.7105,5.6338,162,ind18,no controls
+3,15.8826,6.8790,162,ind18,no controls
+4,9.9820,8.1717,162,ind18,no controls
+5,5.4797,7.7507,162,ind18,no controls
+6,7.0878,9.0273,162,ind18,no controls
+7,5.5867,8.9163,162,ind18,no controls
+8,2.1136,8.8378,162,ind18,no controls
+9,5.3207,8.2592,162,ind18,no controls
+10,4.9215,7.5668,162,ind18,no controls
+11,11.6902,7.8314,162,ind18,no controls
+12,15.6884,8.3300,162,ind18,no controls
+13,16.1896,9.3168,162,ind18,no controls
+14,14.3632,9.0652,162,ind18,no controls
+15,20.5899,10.3964,162,ind18,no controls
+16,25.8528,11.2344,162,ind18,no controls
+17,26.0195,13.9456,162,ind18,no controls
+18,29.5604,13.3981,162,ind18,no controls
+19,20.8236,14.2195,162,ind18,no controls
+20,21.6745,14.4168,162,ind18,no controls
+0,7.1256,1.1571,162,ind19,no controls
+0c,10.8397,2.6496,162,ind19,no controls
+1,22.5028,4.5777,162,ind19,no controls
+2,20.7896,5.8415,162,ind19,no controls
+3,21.4427,7.7044,162,ind19,no controls
+4,16.8632,9.0275,162,ind19,no controls
+5,15.0006,8.8605,162,ind19,no controls
+6,17.4515,10.2425,162,ind19,no controls
+7,19.1819,10.1720,162,ind19,no controls
+8,20.7715,10.2138,162,ind19,no controls
+9,25.9827,9.6447,162,ind19,no controls
+10,24.0939,9.6129,162,ind19,no controls
+11,31.4039,9.9312,162,ind19,no controls
+12,33.9203,11.3117,162,ind19,no controls
+13,35.9600,12.4659,162,ind19,no controls
+14,31.4422,11.5163,162,ind19,no controls
+15,32.9309,13.0767,162,ind19,no controls
+16,32.4117,13.7241,162,ind19,no controls
+17,30.3630,15.0396,162,ind19,no controls
+18,30.4903,15.2063,162,ind19,no controls
+19,21.7111,15.1065,162,ind19,no controls
+20,22.7499,15.0868,162,ind19,no controls
+0,5.1920,0.9626,162,ind20,no controls
+0c,7.7487,2.6109,162,ind20,no controls
+1,15.3086,3.4076,162,ind20,no controls
+2,12.7180,4.9528,162,ind20,no controls
+3,16.3179,5.5316,162,ind20,no controls
+4,14.2420,5.8262,162,ind20,no controls
+5,6.6444,5.6291,162,ind20,no controls
+6,7.4285,6.6345,162,ind20,no controls
+7,6.9584,7.2901,162,ind20,no controls
+8,8.8048,7.6373,162,ind20,no controls
+9,10.8153,7.9400,162,ind20,no controls
+10,10.6138,7.9452,162,ind20,no controls
+11,17.6499,8.3712,162,ind20,no controls
+12,21.1640,9.3126,162,ind20,no controls
+13,21.7636,10.1886,162,ind20,no controls
+14,20.5583,9.3095,162,ind20,no controls
+15,22.1924,11.2154,162,ind20,no controls
+16,23.8992,11.1823,162,ind20,no controls
+17,25.0226,12.2703,162,ind20,no controls
+18,27.4472,12.4761,162,ind20,no controls
+19,20.0229,12.3786,162,ind20,no controls
+20,23.2299,12.5030,162,ind20,no controls
+0,5.3609,0.8746,162,ind21,no controls
+0c,7.6242,2.4459,162,ind21,no controls
+1,15.5234,3.3676,162,ind21,no controls
+2,10.3817,5.5569,162,ind21,no controls
+3,12.1786,5.2652,162,ind21,no controls
+4,9.6911,6.4056,162,ind21,no controls
+5,8.7924,5.8136,162,ind21,no controls
+6,11.1448,6.5659,162,ind21,no controls
+7,10.2941,7.0532,162,ind21,no controls
+8,10.0218,7.0787,162,ind21,no controls
+9,12.2197,6.7645,162,ind21,no controls
+10,10.4587,5.7872,162,ind21,no controls
+11,17.0880,5.3138,162,ind21,no controls
+12,18.1652,6.1864,162,ind21,no controls
+13,19.5481,6.9008,162,ind21,no controls
+14,16.4227,6.6769,162,ind21,no controls
+15,17.5587,8.0987,162,ind21,no controls
+16,19.4933,8.7766,162,ind21,no controls
+17,20.8636,10.3500,162,ind21,no controls
+18,20.0866,10.1825,162,ind21,no controls
+19,13.8891,11.3707,162,ind21,no controls
+20,14.5141,11.7845,162,ind21,no controls
+0,5.8725,0.8759,162,ind22,no controls
+0c,8.7307,2.5282,162,ind22,no controls
+1,18.9129,4.2785,162,ind22,no controls
+2,15.3893,4.5627,162,ind22,no controls
+3,15.3061,4.8241,162,ind22,no controls
+4,14.0067,5.2107,162,ind22,no controls
+5,8.6883,4.5640,162,ind22,no controls
+6,12.7118,5.5827,162,ind22,no controls
+7,15.2574,5.8485,162,ind22,no controls
+8,15.1169,5.6604,162,ind22,no controls
+9,16.9925,6.5207,162,ind22,no controls
+10,16.1624,6.6493,162,ind22,no controls
+11,22.8497,7.1509,162,ind22,no controls
+12,22.8096,7.2291,162,ind22,no controls
+13,23.2186,8.5496,162,ind22,no controls
+14,21.8143,7.0144,162,ind22,no controls
+15,23.8696,7.5472,162,ind22,no controls
+16,24.9128,7.5966,162,ind22,no controls
+17,23.7713,8.5373,162,ind22,no controls
+18,23.0560,8.0591,162,ind22,no controls
+19,17.1969,7.8284,162,ind22,no controls
+20,21.4275,8.5490,162,ind22,no controls
+0,5.5474,1.2370,162,ind23,no controls
+0c,7.9064,2.2317,162,ind23,no controls
+1,19.7070,3.7250,162,ind23,no controls
+2,16.6383,5.4461,162,ind23,no controls
+3,20.3279,5.3322,162,ind23,no controls
+4,15.8515,6.8296,162,ind23,no controls
+5,9.8726,7.6875,162,ind23,no controls
+6,13.6574,8.8648,162,ind23,no controls
+7,16.6457,8.5641,162,ind23,no controls
+8,14.9032,8.8230,162,ind23,no controls
+9,14.9872,7.9503,162,ind23,no controls
+10,14.5217,7.1291,162,ind23,no controls
+11,22.3269,7.2013,162,ind23,no controls
+12,26.6564,8.8804,162,ind23,no controls
+13,30.2634,10.6787,162,ind23,no controls
+14,29.6069,9.8945,162,ind23,no controls
+15,30.6461,11.5820,162,ind23,no controls
+16,34.3066,12.2568,162,ind23,no controls
+17,34.3244,13.6359,162,ind23,no controls
+18,36.0493,13.5867,162,ind23,no controls
+19,28.0968,13.5802,162,ind23,no controls
+20,30.0364,13.8523,162,ind23,no controls
+0,4.5057,0.7344,162,ind24,no controls
+0c,6.8806,2.4154,162,ind24,no controls
+1,12.3184,2.9540,162,ind24,no controls
+2,13.8043,3.5088,162,ind24,no controls
+3,15.1048,3.9018,162,ind24,no controls
+4,12.9734,4.4644,162,ind24,no controls
+5,9.4445,4.5766,162,ind24,no controls
+6,11.3623,5.7737,162,ind24,no controls
+7,10.4076,6.1027,162,ind24,no controls
+8,9.9150,5.5780,162,ind24,no controls
+9,13.0296,6.0568,162,ind24,no controls
+10,11.5685,6.2418,162,ind24,no controls
+11,16.3129,7.3020,162,ind24,no controls
+12,16.5241,7.9152,162,ind24,no controls
+13,15.9641,8.8820,162,ind24,no controls
+14,15.2320,7.8758,162,ind24,no controls
+15,14.5727,8.8858,162,ind24,no controls
+16,15.8390,8.8498,162,ind24,no controls
+17,18.7273,9.1642,162,ind24,no controls
+18,19.9408,9.0184,162,ind24,no controls
+19,12.4847,7.8813,162,ind24,no controls
+20,13.7022,8.5707,162,ind24,no controls
+0,4.4699,0.7770,162,ind25,no controls
+0c,7.0073,2.1732,162,ind25,no controls
+1,10.8271,3.0680,162,ind25,no controls
+2,11.9907,3.6057,162,ind25,no controls
+3,10.6229,4.0632,162,ind25,no controls
+4,10.4887,4.4524,162,ind25,no controls
+5,7.6951,4.7539,162,ind25,no controls
+6,10.4646,5.7107,162,ind25,no controls
+7,10.0711,6.2738,162,ind25,no controls
+8,9.4163,6.3842,162,ind25,no controls
+9,11.0079,6.6115,162,ind25,no controls
+10,10.4840,6.7926,162,ind25,no controls
+11,15.2947,7.6134,162,ind25,no controls
+12,17.9798,7.7625,162,ind25,no controls
+13,18.0408,9.0910,162,ind25,no controls
+14,16.7800,8.2501,162,ind25,no controls
+15,17.1113,9.3233,162,ind25,no controls
+16,18.6706,8.9910,162,ind25,no controls
+17,23.6932,9.7600,162,ind25,no controls
+18,22.4920,11.0703,162,ind25,no controls
+19,17.9065,10.4610,162,ind25,no controls
+20,15.6356,10.9793,162,ind25,no controls
+0,3.9538,0.8174,162,ind26,no controls
+0c,5.3387,1.9693,162,ind26,no controls
+1,9.2888,2.8185,162,ind26,no controls
+2,9.7594,3.0963,162,ind26,no controls
+3,11.7884,3.9532,162,ind26,no controls
+4,11.1612,3.9839,162,ind26,no controls
+5,9.6599,4.2789,162,ind26,no controls
+6,12.4426,5.2838,162,ind26,no controls
+7,12.1175,5.8966,162,ind26,no controls
+8,12.7720,5.2006,162,ind26,no controls
+9,17.1846,5.9906,162,ind26,no controls
+10,15.1538,6.8444,162,ind26,no controls
+11,17.6976,7.4709,162,ind26,no controls
+12,18.5504,6.7792,162,ind26,no controls
+13,16.8977,7.2482,162,ind26,no controls
+14,16.8141,6.6253,162,ind26,no controls
+15,16.5068,7.5973,162,ind26,no controls
+16,17.0758,7.9439,162,ind26,no controls
+17,21.7994,8.5153,162,ind26,no controls
+18,25.0247,8.7556,162,ind26,no controls
+19,17.2480,8.6288,162,ind26,no controls
+20,16.8642,8.7131,162,ind26,no controls
+0,14.5288,2.0458,162,ind27,no controls
+0c,23.0758,3.8909,162,ind27,no controls
+1,29.6035,6.6084,162,ind27,no controls
+2,30.8758,8.3766,162,ind27,no controls
+3,29.1916,9.3227,162,ind27,no controls
+4,26.7119,11.2049,162,ind27,no controls
+5,27.8573,10.7557,162,ind27,no controls
+6,27.6296,11.3743,162,ind27,no controls
+7,27.3074,10.6543,162,ind27,no controls
+8,36.8084,10.6612,162,ind27,no controls
+9,41.9794,10.9725,162,ind27,no controls
+10,41.7274,11.2142,162,ind27,no controls
+11,48.8830,10.9890,162,ind27,no controls
+12,51.1835,12.1871,162,ind27,no controls
+13,54.3862,12.2713,162,ind27,no controls
+14,46.2960,12.7543,162,ind27,no controls
+15,52.4478,13.2574,162,ind27,no controls
+16,55.5636,13.1750,162,ind27,no controls
+17,53.3545,15.9971,162,ind27,no controls
+18,54.8823,16.5456,162,ind27,no controls
+19,50.0679,17.7498,162,ind27,no controls
+20,53.2979,17.6068,162,ind27,no controls
+0,7.5295,1.3743,162,ind28,no controls
+0c,13.9538,3.4383,162,ind28,no controls
+1,25.6058,5.0644,162,ind28,no controls
+2,21.6507,6.8792,162,ind28,no controls
+3,22.8513,9.2206,162,ind28,no controls
+4,20.4981,10.3464,162,ind28,no controls
+5,20.2650,9.6624,162,ind28,no controls
+6,20.6732,10.6883,162,ind28,no controls
+7,23.8156,10.9843,162,ind28,no controls
+8,27.3198,10.9959,162,ind28,no controls
+9,33.9144,10.6131,162,ind28,no controls
+10,34.4565,9.8090,162,ind28,no controls
+11,47.2069,9.3172,162,ind28,no controls
+12,49.4317,10.7060,162,ind28,no controls
+13,51.5056,11.7635,162,ind28,no controls
+14,47.2498,11.7455,162,ind28,no controls
+15,47.6061,13.7097,162,ind28,no controls
+16,50.9129,15.0763,162,ind28,no controls
+17,50.0737,18.5428,162,ind28,no controls
+18,52.1410,19.1132,162,ind28,no controls
+19,43.4764,19.9371,162,ind28,no controls
+20,47.7349,19.7751,162,ind28,no controls
+0,6.3751,1.0609,162,ind29,no controls
+0c,10.4305,3.8960,162,ind29,no controls
+1,17.4010,6.2541,162,ind29,no controls
+2,14.5504,8.8155,162,ind29,no controls
+3,8.8407,10.8534,162,ind29,no controls
+4,-3.6508,13.3870,162,ind29,no controls
+5,-14.6196,12.2018,162,ind29,no controls
+6,-15.6529,12.9027,162,ind29,no controls
+7,-13.7375,12.1623,162,ind29,no controls
+8,-6.2181,12.6172,162,ind29,no controls
+9,2.0178,12.7194,162,ind29,no controls
+10,1.5623,13.2553,162,ind29,no controls
+11,17.0756,13.5303,162,ind29,no controls
+12,24.8633,16.8010,162,ind29,no controls
+13,31.1922,17.6202,162,ind29,no controls
+14,18.8070,15.3829,162,ind29,no controls
+15,18.8008,17.7791,162,ind29,no controls
+16,21.1671,18.5595,162,ind29,no controls
+17,19.1843,19.9798,162,ind29,no controls
+18,23.9510,19.3176,162,ind29,no controls
+19,5.4762,20.5438,162,ind29,no controls
+20,1.2300,21.2906,162,ind29,no controls
+0,5.6788,0.9564,162,ind30,no controls
+0c,6.9963,1.9990,162,ind30,no controls
+1,11.6957,3.8371,162,ind30,no controls
+2,12.3794,7.1641,162,ind30,no controls
+3,9.8719,8.3026,162,ind30,no controls
+4,6.3598,9.0307,162,ind30,no controls
+5,2.6227,8.6206,162,ind30,no controls
+6,2.6391,8.6166,162,ind30,no controls
+7,-0.6029,8.5223,162,ind30,no controls
+8,4.0810,7.4956,162,ind30,no controls
+9,8.4147,7.0331,162,ind30,no controls
+10,7.5003,7.3910,162,ind30,no controls
+11,12.5626,6.8220,162,ind30,no controls
+12,16.9738,7.7484,162,ind30,no controls
+13,17.6294,8.0832,162,ind30,no controls
+14,16.2112,7.7750,162,ind30,no controls
+15,15.6929,8.6062,162,ind30,no controls
+16,12.7096,9.9046,162,ind30,no controls
+17,13.5666,12.2419,162,ind30,no controls
+18,18.5037,12.6625,162,ind30,no controls
+19,10.2967,12.2939,162,ind30,no controls
+20,12.3796,12.4391,162,ind30,no controls
+0,5.4675,0.9672,162,ind31,no controls
+0c,6.7213,1.7727,162,ind31,no controls
+1,10.7718,2.9284,162,ind31,no controls
+2,11.7067,3.1779,162,ind31,no controls
+3,12.3678,4.0239,162,ind31,no controls
+4,12.3188,4.2256,162,ind31,no controls
+5,8.7602,4.4329,162,ind31,no controls
+6,10.8169,5.3504,162,ind31,no controls
+7,9.6426,5.7026,162,ind31,no controls
+8,10.1333,5.5057,162,ind31,no controls
+9,13.9779,5.0196,162,ind31,no controls
+10,15.9889,5.2716,162,ind31,no controls
+11,19.5203,5.7744,162,ind31,no controls
+12,22.6946,6.1019,162,ind31,no controls
+13,21.3746,6.0083,162,ind31,no controls
+14,20.3522,6.7149,162,ind31,no controls
+15,20.6365,7.8674,162,ind31,no controls
+16,20.7921,7.9270,162,ind31,no controls
+17,23.3991,8.8735,162,ind31,no controls
+18,23.1534,9.2000,162,ind31,no controls
+19,16.0313,7.8110,162,ind31,no controls
+20,18.1804,8.1468,162,ind31,no controls
+0,4.7110,0.6341,162,ind32,no controls
+0c,6.1390,2.1343,162,ind32,no controls
+1,10.9266,2.5748,162,ind32,no controls
+2,8.8289,2.8775,162,ind32,no controls
+3,11.6521,3.4117,162,ind32,no controls
+4,10.4765,3.7150,162,ind32,no controls
+5,5.9372,3.8231,162,ind32,no controls
+6,7.6250,4.2537,162,ind32,no controls
+7,7.1243,4.5669,162,ind32,no controls
+8,6.2025,4.0878,162,ind32,no controls
+9,8.1387,4.5807,162,ind32,no controls
+10,9.3737,4.8797,162,ind32,no controls
+11,14.2392,5.3535,162,ind32,no controls
+12,12.9884,5.1952,162,ind32,no controls
+13,12.4701,5.8934,162,ind32,no controls
+14,12.0866,6.1934,162,ind32,no controls
+15,14.8408,7.2911,162,ind32,no controls
+16,17.2448,7.2176,162,ind32,no controls
+17,17.5963,8.7524,162,ind32,no controls
+18,18.6469,8.6790,162,ind32,no controls
+19,12.8053,7.2171,162,ind32,no controls
+20,13.3149,7.6860,162,ind32,no controls
+0,4.2587,0.8463,162,ind33,no controls
+0c,5.0440,1.7657,162,ind33,no controls
+1,15.4885,3.2862,162,ind33,no controls
+2,15.4749,3.5773,162,ind33,no controls
+3,15.4474,3.9195,162,ind33,no controls
+4,13.7437,4.1046,162,ind33,no controls
+5,8.4240,4.0650,162,ind33,no controls
+6,13.8992,4.9459,162,ind33,no controls
+7,14.4972,5.6647,162,ind33,no controls
+8,14.5164,5.9030,162,ind33,no controls
+9,16.7562,6.3825,162,ind33,no controls
+10,16.1224,6.1007,162,ind33,no controls
+11,18.6504,6.3156,162,ind33,no controls
+12,18.7698,6.4079,162,ind33,no controls
+13,18.8226,7.1397,162,ind33,no controls
+14,18.2311,7.0790,162,ind33,no controls
+15,18.1595,8.3501,162,ind33,no controls
+16,21.9770,8.9368,162,ind33,no controls
+17,23.8107,9.6300,162,ind33,no controls
+18,23.8077,8.9524,162,ind33,no controls
+19,21.4749,7.7092,162,ind33,no controls
+20,26.4351,8.1138,162,ind33,no controls
+0,4.9644,0.8374,162,ind34,no controls
+0c,6.0640,1.9987,162,ind34,no controls
+1,12.1925,3.1249,162,ind34,no controls
+2,11.4581,3.7107,162,ind34,no controls
+3,14.1122,3.9968,162,ind34,no controls
+4,11.5901,4.3080,162,ind34,no controls
+5,7.8606,3.9833,162,ind34,no controls
+6,9.8938,4.7959,162,ind34,no controls
+7,9.6112,5.0722,162,ind34,no controls
+8,9.0487,5.0703,162,ind34,no controls
+9,11.6681,5.4702,162,ind34,no controls
+10,12.6936,5.2837,162,ind34,no controls
+11,17.1529,5.6630,162,ind34,no controls
+12,17.1813,6.5082,162,ind34,no controls
+13,18.2514,7.5761,162,ind34,no controls
+14,18.4770,7.0608,162,ind34,no controls
+15,20.6921,7.8728,162,ind34,no controls
+16,21.5862,7.9704,162,ind34,no controls
+17,23.8983,9.1034,162,ind34,no controls
+18,25.1980,8.6717,162,ind34,no controls
+19,19.3721,8.1181,162,ind34,no controls
+20,21.5833,8.5855,162,ind34,no controls
+0,5.3578,0.9382,162,ind35,no controls
+0c,4.3387,2.0924,162,ind35,no controls
+1,9.4570,3.4195,162,ind35,no controls
+2,8.0791,4.3765,162,ind35,no controls
+3,6.3041,4.8671,162,ind35,no controls
+4,4.0072,6.0786,162,ind35,no controls
+5,1.4697,6.8475,162,ind35,no controls
+6,4.0563,8.2173,162,ind35,no controls
+7,4.7972,8.4449,162,ind35,no controls
+8,3.7675,8.2535,162,ind35,no controls
+9,6.1858,8.6789,162,ind35,no controls
+10,6.1324,8.1928,162,ind35,no controls
+11,10.7709,7.6058,162,ind35,no controls
+12,11.2488,8.7476,162,ind35,no controls
+13,12.7742,9.6199,162,ind35,no controls
+14,15.3993,9.7596,162,ind35,no controls
+15,15.9087,10.2899,162,ind35,no controls
+16,16.5762,10.6083,162,ind35,no controls
+17,19.1957,11.3971,162,ind35,no controls
+18,19.5028,11.3330,162,ind35,no controls
+19,14.9772,10.6937,162,ind35,no controls
+20,17.1517,11.2707,162,ind35,no controls
+0,5.3525,0.8522,162,ind36,no controls
+0c,5.6640,2.3005,162,ind36,no controls
+1,10.3181,3.3008,162,ind36,no controls
+2,7.9592,3.9475,162,ind36,no controls
+3,10.3161,4.2171,162,ind36,no controls
+4,8.6841,5.0854,162,ind36,no controls
+5,4.0770,5.1143,162,ind36,no controls
+6,7.1166,6.1772,162,ind36,no controls
+7,7.7206,6.2485,162,ind36,no controls
+8,5.0228,6.6557,162,ind36,no controls
+9,8.0992,7.0107,162,ind36,no controls
+10,8.1789,6.2755,162,ind36,no controls
+11,13.0504,5.9701,162,ind36,no controls
+12,12.0451,6.5571,162,ind36,no controls
+13,12.7799,7.8647,162,ind36,no controls
+14,13.9932,7.7559,162,ind36,no controls
+15,17.2892,8.2805,162,ind36,no controls
+16,18.0230,8.6666,162,ind36,no controls
+17,20.7741,9.1383,162,ind36,no controls
+18,21.8571,8.7254,162,ind36,no controls
+19,15.2557,7.9887,162,ind36,no controls
+20,18.0171,8.6043,162,ind36,no controls
+0,5.8770,1.0384,162,ind37,no controls
+0c,5.9022,2.4990,162,ind37,no controls
+1,14.3130,3.5145,162,ind37,no controls
+2,12.4049,5.2055,162,ind37,no controls
+3,11.4415,5.2631,162,ind37,no controls
+4,9.5306,5.7557,162,ind37,no controls
+5,7.4132,6.1679,162,ind37,no controls
+6,10.5638,7.9357,162,ind37,no controls
+7,10.5040,8.0164,162,ind37,no controls
+8,9.5175,8.2143,162,ind37,no controls
+9,13.1659,8.0139,162,ind37,no controls
+10,13.2268,6.7405,162,ind37,no controls
+11,18.2321,6.2283,162,ind37,no controls
+12,19.5898,6.8687,162,ind37,no controls
+13,21.1040,7.3470,162,ind37,no controls
+14,21.8994,7.4976,162,ind37,no controls
+15,23.8341,8.3697,162,ind37,no controls
+16,24.4246,9.2005,162,ind37,no controls
+17,27.3346,10.9095,162,ind37,no controls
+18,28.6842,10.9341,162,ind37,no controls
+19,23.5634,11.3637,162,ind37,no controls
+20,25.6367,11.0733,162,ind37,no controls
+0,5.1284,0.7515,162,ind38,no controls
+0c,6.9054,2.1402,162,ind38,no controls
+1,13.1927,3.3280,162,ind38,no controls
+2,12.3246,4.0523,162,ind38,no controls
+3,13.5173,4.2480,162,ind38,no controls
+4,12.7530,4.6074,162,ind38,no controls
+5,11.5836,4.0362,162,ind38,no controls
+6,14.1335,4.7861,162,ind38,no controls
+7,14.1608,5.2371,162,ind38,no controls
+8,13.2034,5.2591,162,ind38,no controls
+9,14.3565,5.5129,162,ind38,no controls
+10,12.9521,5.6967,162,ind38,no controls
+11,17.8082,5.9106,162,ind38,no controls
+12,19.8661,6.0369,162,ind38,no controls
+13,20.6266,6.9963,162,ind38,no controls
+14,21.6770,6.5461,162,ind38,no controls
+15,21.7607,7.0278,162,ind38,no controls
+16,22.3518,7.8456,162,ind38,no controls
+17,24.6115,8.7430,162,ind38,no controls
+18,27.3394,8.2371,162,ind38,no controls
+19,23.5810,6.6934,162,ind38,no controls
+20,27.2932,7.4573,162,ind38,no controls
+0,4.8182,1.0518,162,ind39,no controls
+0c,6.7962,1.8115,162,ind39,no controls
+1,12.0668,2.9246,162,ind39,no controls
+2,12.7906,3.2531,162,ind39,no controls
+3,13.5928,3.8566,162,ind39,no controls
+4,12.6739,4.2711,162,ind39,no controls
+5,9.1004,4.7466,162,ind39,no controls
+6,12.1991,5.1650,162,ind39,no controls
+7,10.6118,5.4660,162,ind39,no controls
+8,9.6997,5.5570,162,ind39,no controls
+9,11.9143,4.8260,162,ind39,no controls
+10,12.6258,4.6786,162,ind39,no controls
+11,18.2860,4.7007,162,ind39,no controls
+12,17.8371,5.6196,162,ind39,no controls
+13,19.0159,6.1846,162,ind39,no controls
+14,17.3716,6.5504,162,ind39,no controls
+15,17.0155,7.5433,162,ind39,no controls
+16,17.9760,8.3332,162,ind39,no controls
+17,18.6289,9.9286,162,ind39,no controls
+18,20.5338,9.4500,162,ind39,no controls
+19,15.5351,9.6123,162,ind39,no controls
+20,17.2716,9.7245,162,ind39,no controls
+0,4.8015,1.0895,162,ind40,no controls
+0c,8.2261,2.0552,162,ind40,no controls
+1,20.9154,4.4170,162,ind40,no controls
+2,18.1412,5.4173,162,ind40,no controls
+3,18.2684,5.6302,162,ind40,no controls
+4,15.9522,6.4629,162,ind40,no controls
+5,12.5123,6.0958,162,ind40,no controls
+6,15.5893,6.5890,162,ind40,no controls
+7,15.1591,6.7556,162,ind40,no controls
+8,18.6239,6.2543,162,ind40,no controls
+9,22.8760,5.9340,162,ind40,no controls
+10,23.6125,6.3258,162,ind40,no controls
+11,27.7120,6.9384,162,ind40,no controls
+12,29.3759,7.2852,162,ind40,no controls
+13,30.1219,7.7191,162,ind40,no controls
+14,26.1089,8.2422,162,ind40,no controls
+15,28.9518,9.2472,162,ind40,no controls
+16,28.2860,10.1112,162,ind40,no controls
+17,30.6163,11.5061,162,ind40,no controls
+18,32.7945,10.6951,162,ind40,no controls
+19,24.1741,10.3284,162,ind40,no controls
+20,24.4080,10.5296,162,ind40,no controls
+0,5.2019,1.0271,162,ind41,no controls
+0c,6.5068,1.9788,162,ind41,no controls
+1,14.0833,3.0719,162,ind41,no controls
+2,14.3054,3.9698,162,ind41,no controls
+3,14.5351,4.3190,162,ind41,no controls
+4,12.2423,4.7008,162,ind41,no controls
+5,8.0125,4.4537,162,ind41,no controls
+6,11.3071,5.5498,162,ind41,no controls
+7,12.7872,5.9244,162,ind41,no controls
+8,11.9573,5.8079,162,ind41,no controls
+9,13.2051,5.5351,162,ind41,no controls
+10,14.0761,5.3960,162,ind41,no controls
+11,17.3441,5.9742,162,ind41,no controls
+12,21.2969,6.4892,162,ind41,no controls
+13,23.4417,7.0882,162,ind41,no controls
+14,21.1057,6.5820,162,ind41,no controls
+15,22.1721,7.5077,162,ind41,no controls
+16,23.3379,8.3042,162,ind41,no controls
+17,23.0995,10.1598,162,ind41,no controls
+18,23.8547,10.5465,162,ind41,no controls
+19,18.4342,11.2485,162,ind41,no controls
+20,19.2761,11.2026,162,ind41,no controls
+0,4.7110,0.7082,162,ind42,no controls
+0c,6.2028,1.9504,162,ind42,no controls
+1,10.6748,2.7655,162,ind42,no controls
+2,11.0322,3.2551,162,ind42,no controls
+3,11.8436,3.3991,162,ind42,no controls
+4,9.5599,3.6030,162,ind42,no controls
+5,6.5644,3.1225,162,ind42,no controls
+6,8.3806,3.8188,162,ind42,no controls
+7,7.6500,4.1866,162,ind42,no controls
+8,7.6728,4.0926,162,ind42,no controls
+9,9.2185,4.2926,162,ind42,no controls
+10,9.6230,4.6828,162,ind42,no controls
+11,14.4758,5.3772,162,ind42,no controls
+12,15.8005,5.7276,162,ind42,no controls
+13,17.0137,6.3336,162,ind42,no controls
+14,17.7887,6.1043,162,ind42,no controls
+15,18.7905,7.0155,162,ind42,no controls
+16,20.0127,7.3226,162,ind42,no controls
+17,21.2415,8.1970,162,ind42,no controls
+18,23.1996,8.1860,162,ind42,no controls
+19,17.7405,6.9819,162,ind42,no controls
+20,19.3625,7.5032,162,ind42,no controls
+0,5.1749,0.8579,162,ind43,no controls
+0c,6.6303,1.7006,162,ind43,no controls
+1,12.3442,2.6738,162,ind43,no controls
+2,12.6780,3.3063,162,ind43,no controls
+3,12.1428,3.2393,162,ind43,no controls
+4,10.4117,3.8607,162,ind43,no controls
+5,4.6606,3.7384,162,ind43,no controls
+6,7.4929,4.2996,162,ind43,no controls
+7,7.7059,4.8266,162,ind43,no controls
+8,7.1107,4.5594,162,ind43,no controls
+9,7.4983,4.8123,162,ind43,no controls
+10,8.9247,4.6244,162,ind43,no controls
+11,12.3985,4.7741,162,ind43,no controls
+12,13.1172,5.3289,162,ind43,no controls
+13,12.9451,5.8467,162,ind43,no controls
+14,12.8638,5.8414,162,ind43,no controls
+15,11.7230,7.1254,162,ind43,no controls
+16,11.8550,8.1707,162,ind43,no controls
+17,13.2261,9.5275,162,ind43,no controls
+18,15.1040,9.3327,162,ind43,no controls
+19,9.8625,8.7691,162,ind43,no controls
+20,11.0363,8.8492,162,ind43,no controls
+0,4.1146,0.6561,162,ind44,no controls
+0c,5.1757,1.9351,162,ind44,no controls
+1,12.7908,2.7279,162,ind44,no controls
+2,11.1275,3.3664,162,ind44,no controls
+3,12.5892,3.3975,162,ind44,no controls
+4,12.6266,3.7238,162,ind44,no controls
+5,9.8220,3.5898,162,ind44,no controls
+6,13.4502,4.4482,162,ind44,no controls
+7,13.6180,5.0944,162,ind44,no controls
+8,12.5019,5.1609,162,ind44,no controls
+9,15.6444,5.3591,162,ind44,no controls
+10,15.6320,5.5534,162,ind44,no controls
+11,19.3494,5.8883,162,ind44,no controls
+12,20.6281,6.4772,162,ind44,no controls
+13,21.8377,6.7111,162,ind44,no controls
+14,22.4196,6.8772,162,ind44,no controls
+15,22.5938,7.6554,162,ind44,no controls
+16,23.6823,8.5949,162,ind44,no controls
+17,24.8863,9.6244,162,ind44,no controls
+18,24.4855,9.5923,162,ind44,no controls
+19,17.6992,9.8963,162,ind44,no controls
+20,18.0530,9.8548,162,ind44,no controls
+0,4.8899,1.3384,162,ind45,no controls
+0c,9.0068,3.9389,162,ind45,no controls
+1,14.0550,4.1285,162,ind45,no controls
+2,10.2752,4.8993,162,ind45,no controls
+3,7.0876,7.1525,162,ind45,no controls
+4,4.5532,6.0186,162,ind45,no controls
+5,0.9612,6.2209,162,ind45,no controls
+6,3.1886,6.4787,162,ind45,no controls
+7,-0.0345,7.3104,162,ind45,no controls
+8,-2.7450,7.1442,162,ind45,no controls
+9,3.1162,5.3733,162,ind45,no controls
+10,3.1661,6.2609,162,ind45,no controls
+11,4.3458,7.3119,162,ind45,no controls
+12,2.9926,7.3517,162,ind45,no controls
+13,2.9392,7.8917,162,ind45,no controls
+14,2.9519,7.6296,162,ind45,no controls
+15,4.2761,9.0711,162,ind45,no controls
+16,5.9267,10.4840,162,ind45,no controls
+17,5.3897,13.4451,162,ind45,no controls
+18,5.6787,11.3858,162,ind45,no controls
+19,0.3601,12.7345,162,ind45,no controls
+20,-6.7681,14.6757,162,ind45,no controls
+0,4.6599,0.8802,162,ind46,no controls
+0c,6.0316,3.1301,162,ind46,no controls
+1,7.4417,3.4145,162,ind46,no controls
+2,6.1774,3.6012,162,ind46,no controls
+3,5.7355,5.1485,162,ind46,no controls
+4,1.2989,4.1150,162,ind46,no controls
+5,-1.8812,3.8507,162,ind46,no controls
+6,-1.1426,4.1477,162,ind46,no controls
+7,-1.9432,5.1479,162,ind46,no controls
+8,-4.3213,5.1487,162,ind46,no controls
+9,0.9869,6.5398,162,ind46,no controls
+10,-0.9131,7.3401,162,ind46,no controls
+11,2.0583,7.7102,162,ind46,no controls
+12,4.6883,7.3659,162,ind46,no controls
+13,4.7243,8.1076,162,ind46,no controls
+14,3.8134,6.5460,162,ind46,no controls
+15,6.0960,8.3344,162,ind46,no controls
+16,6.9074,9.0298,162,ind46,no controls
+17,7.0812,10.5785,162,ind46,no controls
+18,9.2276,9.7617,162,ind46,no controls
+19,2.4533,8.2147,162,ind46,no controls
+20,-0.4817,7.5602,162,ind46,no controls
+0,5.3194,1.2984,162,ind47,no controls
+0c,8.2579,3.0918,162,ind47,no controls
+1,17.1446,4.4448,162,ind47,no controls
+2,12.5170,5.2498,162,ind47,no controls
+3,15.8536,6.0232,162,ind47,no controls
+4,9.6060,5.8183,162,ind47,no controls
+5,5.5915,5.6137,162,ind47,no controls
+6,7.9569,7.5548,162,ind47,no controls
+7,6.7112,7.8252,162,ind47,no controls
+8,5.5022,8.2108,162,ind47,no controls
+9,9.4927,7.9676,162,ind47,no controls
+10,11.7451,8.0439,162,ind47,no controls
+11,15.8468,7.8915,162,ind47,no controls
+12,18.4183,8.6314,162,ind47,no controls
+13,21.4934,10.7562,162,ind47,no controls
+14,21.2934,9.7591,162,ind47,no controls
+15,23.8920,11.3898,162,ind47,no controls
+16,26.1801,12.2585,162,ind47,no controls
+17,26.2553,13.5178,162,ind47,no controls
+18,25.7133,11.9498,162,ind47,no controls
+19,19.1039,12.2820,162,ind47,no controls
+20,22.0047,12.9440,162,ind47,no controls
+0,5.0326,1.3228,162,ind48,no controls
+0c,7.7298,3.4017,162,ind48,no controls
+1,15.0792,4.1215,162,ind48,no controls
+2,13.2138,4.2632,162,ind48,no controls
+3,11.4807,5.6638,162,ind48,no controls
+4,7.7772,5.7266,162,ind48,no controls
+5,3.2608,5.9427,162,ind48,no controls
+6,5.7559,6.4510,162,ind48,no controls
+7,3.9936,7.1039,162,ind48,no controls
+8,1.8484,6.9614,162,ind48,no controls
+9,7.1338,6.9596,162,ind48,no controls
+10,6.6198,7.3131,162,ind48,no controls
+11,9.7171,7.7433,162,ind48,no controls
+12,9.5547,8.2645,162,ind48,no controls
+13,8.5912,9.9960,162,ind48,no controls
+14,8.4362,8.3066,162,ind48,no controls
+15,11.9917,9.8717,162,ind48,no controls
+16,14.3201,9.9442,162,ind48,no controls
+17,17.7269,11.8699,162,ind48,no controls
+18,19.7960,10.5122,162,ind48,no controls
+19,12.0831,9.9156,162,ind48,no controls
+20,10.3760,10.4896,162,ind48,no controls
+0,5.0122,1.0184,162,ind49,no controls
+0c,5.3435,2.3619,162,ind49,no controls
+1,13.8376,4.0533,162,ind49,no controls
+2,11.0273,5.3109,162,ind49,no controls
+3,10.8604,5.6654,162,ind49,no controls
+4,6.8101,6.7215,162,ind49,no controls
+5,2.0446,6.1970,162,ind49,no controls
+6,5.7330,7.2809,162,ind49,no controls
+7,7.0278,7.3205,162,ind49,no controls
+8,6.8474,8.3799,162,ind49,no controls
+9,10.9040,9.1184,162,ind49,no controls
+10,11.7639,8.7619,162,ind49,no controls
+11,14.6989,8.6651,162,ind49,no controls
+12,14.9812,9.7065,162,ind49,no controls
+13,13.8501,10.6931,162,ind49,no controls
+14,16.6408,9.9072,162,ind49,no controls
+15,18.7497,9.5167,162,ind49,no controls
+16,21.2699,9.2441,162,ind49,no controls
+17,24.5276,10.2765,162,ind49,no controls
+18,23.4606,9.8045,162,ind49,no controls
+19,17.8493,9.1125,162,ind49,no controls
+20,20.6813,9.2617,162,ind49,no controls

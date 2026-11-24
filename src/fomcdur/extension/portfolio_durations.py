@@ -179,3 +179,38 @@ def equal_duration_test(r: pd.DataFrame, r_mkt: pd.Series, s: pd.Series,
     null = np.array([(_slopes_t(R, rng.permutation(x)) ** 2).sum() for _ in range(n_perm)])
     return {"stat": stat, "df": R.shape[1], "null_mean": float(null.mean()),
             "p_perm": float((1 + (null >= stat).sum()) / (1 + n_perm)), "n_meetings": len(x)}
+
+
+# ---------------------------------------------------------------- inputs
+
+def build_inputs() -> tuple[pd.Series, pd.DataFrame, pd.DataFrame]:
+    """Main-sample surprises, intraday event returns and the monthly sort panel.
+
+    Returns (s, event, monthly): s = MPS (pp) by day 0 for scheduled meetings with TAQ data;
+    event = [permno, date, ret] 40-minute returns; monthly = CRSP month ends with ME, SIC,
+    FF49 industry and size / B/M / profitability / leverage deciles (NYSE breakpoints, ex
+    financials and utilities).
+    """
+    from fomcdur.clean.characteristics import compustat_characteristics, link_to_permno
+    from fomcdur.config import raw_dir
+    from fomcdur.data import french, taq
+    from fomcdur.replication import chen_compare as cc
+    from fomcdur.replication import intraday
+
+    meet = taq.fomc_meetings().set_index("day0")
+    ev = intraday.event_returns(taq.load_nbbo(), taq.load_link())
+    days = pd.DatetimeIndex(sorted(ev["date"].unique()))
+    s = meet.loc[meet.index.isin(days), "mps"].dropna().sort_index()
+    years = list(range(s.index.min().year, s.index.max().year + 1))
+    monthly, _ = cc.load_panels(s.index, years)
+    funda = pd.read_parquet(raw_dir("compustat") / "funda.parquet")
+    link = pd.read_parquet(raw_dir("compustat") / "ccm_link.parquet")
+    monthly = add_characteristics(monthly,
+                                  link_to_permno(compustat_characteristics(funda), link))
+    monthly["ind49"] = french.assign_ff49(monthly["siccd"]).astype(float)
+    monthly["size_dec"] = cc.add_size_decile(monthly, french.load_me_breakpoints())
+    finutil = cc.is_fin_util(monthly["siccd"])
+    monthly.loc[finutil, "size_dec"] = np.nan
+    monthly = add_deciles(monthly, {"bm_dec": "bm", "op_dec": "op_prof",
+                                    "lev_dec": "leverage"}, exclude=finutil)
+    return s, ev, monthly

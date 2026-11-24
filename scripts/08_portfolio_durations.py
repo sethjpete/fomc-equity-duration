@@ -21,12 +21,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from fomcdur.clean.characteristics import compustat_characteristics, link_to_permno
-from fomcdur.config import RESULTS, raw_dir, settings
-from fomcdur.data import french, taq
+from fomcdur.config import RESULTS, settings
+from fomcdur.data import french
 from fomcdur.extension import portfolio_durations as pdur
-from fomcdur.replication import chen_compare as cc
-from fomcdur.replication import intraday
 
 S = settings()
 SCALE = S["duration"]["surprise_scale"]
@@ -37,26 +34,6 @@ SORTS = {"Size (ME)": "size_dec", "Book-to-market": "bm_dec",
 
 def md(df: pd.DataFrame, **kw) -> str:
     return df.to_markdown(**kw)
-
-
-def build() -> tuple[pd.Series, pd.DataFrame, pd.DataFrame]:
-    meet = taq.fomc_meetings().set_index("day0")
-    ev = intraday.event_returns(taq.load_nbbo(), taq.load_link())
-    days = pd.DatetimeIndex(sorted(ev["date"].unique()))
-    s = meet.loc[meet.index.isin(days), "mps"].dropna().sort_index()
-    years = list(range(s.index.min().year, s.index.max().year + 1))
-    monthly, _ = cc.load_panels(s.index, years)
-    funda = pd.read_parquet(raw_dir("compustat") / "funda.parquet")
-    link = pd.read_parquet(raw_dir("compustat") / "ccm_link.parquet")
-    monthly = pdur.add_characteristics(
-        monthly, link_to_permno(compustat_characteristics(funda), link))
-    monthly["ind49"] = french.assign_ff49(monthly["siccd"]).astype(float)
-    monthly["size_dec"] = cc.add_size_decile(monthly, french.load_me_breakpoints())
-    finutil = cc.is_fin_util(monthly["siccd"])
-    monthly.loc[finutil, "size_dec"] = np.nan
-    monthly = pdur.add_deciles(monthly, {"bm_dec": "bm", "op_dec": "op_prof",
-                                         "lev_dec": "leverage"}, exclude=finutil)
-    return s, ev, monthly
 
 
 def industry_figure(tab: pd.DataFrame, names: pd.Series, d_mkt: float, path) -> None:
@@ -79,7 +56,7 @@ def industry_figure(tab: pd.DataFrame, names: pd.Series, d_mkt: float, path) -> 
 
 
 def main() -> None:
-    s, ev, monthly = build()
+    s, ev, monthly = pdur.build_inputs()
     names = french.load_siccodes49().drop_duplicates("ind49").set_index("ind49")["ind_name"]
     out = ["# M3: FOMC day-0 durations of industry and characteristic portfolios",
            (f"\nGenerated {date.today()}. D in years (HC1 se): minus the slope of VW portfolio "  # noqa: DTZ011

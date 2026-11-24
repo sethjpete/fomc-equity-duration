@@ -122,12 +122,28 @@ Tick boxes as work lands; open a GitHub issue per bullet when someone picks it u
   and significant (the sort actually separates rate exposure)
 
 ## M4. Horizon durations D(h) (headline)
-- [ ] Cumulative returns for h = 0..20 after each scheduled meeting. Proposed with the
-      intraday-only decision: start the cumulation at the s-30 min TAQ midpoint, so D(0) is
-      the 40-minute response and D(h) adds daily CRSP closes after it (to confirm with Seth)
-- [ ] D(h) with and without 2y/10y post-event yield controls, with factor controls
-- [ ] Pre-specified h = 5 and h = 20; full curve figure with confidence bands
-- [ ] Same-day share D(0)/D(20) with event bootstrap CI
+Design (Seth, 2026-11-24): every horizon is anchored at the TAQ midpoint 30 minutes before
+the statement. h = 0 is the 40-minute response (= M3), "0c" runs to the day-0 close, h >= 1
+adds daily CRSP closes. VW buy-and-hold portfolios (`make horizons`,
+`fomcdur.extension.horizon_returns`, `scripts/09_horizon_durations.py`).
+- [x] Cumulative returns for h = 0..20 after each scheduled meeting (2026-11-24)
+- [x] D(h) with and without 2y/10y post-event yield controls; spreads also with FF5 + Mom
+      controls (caution: HML over the window may itself respond to the surprise)
+- [x] Robustness set at h = 0, 0c, 5, 20; same-day share D(0)/D(20) with a meeting bootstrap
+- [x] First results (2026-11-24, `results/tables/m4_horizon_durations.md`,
+      `results/figures/m4_dh_curves.png`):
+  - **Market:** D(0) 5.2 (0.8), D(0c) 6.2 (2.2), D(1) 11.2 (2.8), D(20) 13.3 (7.9). Same-day
+    share D(0)/D(20) = 0.39; with yield controls 0.33, bootstrap CI [0.16, 1.32]. The drift
+    is strong in 2003-07 (D(20) 22.5, se 7.5) and weak after 2008 (9.2, se 10.3). Yields
+    also keep moving: the 2y moves 0.72pp per pp of MPS on day 0 and ~1.0 by day 20.
+  - **B/M 10-1:** 0.4 (0.7) at 40 minutes, 4.4 (1.7) at the close, 21 (13) at h = 20; with
+    FF5 + Mom controls 21.8 (7.4). The value spread is almost all post-window drift.
+  - **Size 10-1:** +1.8 (0.5) at 40 minutes, then reverses: -0.9 at the close, -14.9 (7.8)
+    at h = 20 (-9.9, se 4.2 with factors). Small stocks react late, then more.
+  - **Industries:** D(0) ranks carry over (corr with D(0c) 0.93, with D(20) 0.58), but
+    D(20) is too noisy industry by industry (mean se 10.7).
+- [ ] Pre-specified h = 5 and h = 20 written up; decide the headline portfolio (fitted
+      duration quintiles from M3 step 2, or B/M as a first pass)
 - **Check:** headline figure and table in `results/`, written into the paper
 
 ## M5. Strategy
