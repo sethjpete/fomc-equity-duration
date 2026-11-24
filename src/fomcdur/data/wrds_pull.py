@@ -130,7 +130,7 @@ def _pull_year(db, y: int, legacy: bool, shrcd: str, exchcd: str) -> pd.DataFram
 def pull_crsp(db=None, start_year: int | None = None, end_year: int | None = None) -> None:
     """Daily stock file, one parquet per year; legacy SIZ up to legacy_end_year, CIZ after."""
     s = settings()
-    start_year = start_year or int(s["sample"]["start"][:4])
+    start_year = start_year or int(s["sample"]["data_start"][:4])
     end_year = end_year or int(s["sample"]["data_end"][:4])
     legacy_end = int(s["wrds"]["legacy_end_year"])
     db = db or connect()
@@ -195,8 +195,8 @@ def pull_compustat(db=None) -> None:
     s = settings()
     db = db or connect()
     out = raw_dir("compustat")
-    # Start a few years early so lagged characteristics exist in 1994.
-    start = f"{int(s['sample']['start'][:4]) - 3}-01-01"
+    # Start a few years early so lagged characteristics exist at the first formation month.
+    start = f"{int(s['sample']['data_start'][:4]) - 3}-01-01"
     db.raw_sql(COMPUSTAT_SQL.format(start=start, end=s["sample"]["data_end"]),
                date_cols=["datadate"]).to_parquet(out / "funda.parquet", index=False)
     db.raw_sql(CCM_LINK_SQL, date_cols=["linkdt", "linkenddt"]).to_parquet(

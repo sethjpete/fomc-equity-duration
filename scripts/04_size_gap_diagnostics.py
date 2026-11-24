@@ -40,7 +40,7 @@ def main(chen_file: str) -> None:
            f"\nGenerated {date.today()}; Chen file `{chen.FILES[chen_file]}`."]
 
     td = french.load_factors().index
-    surp = sffed.load(scheduled_only=False)
+    surp = sffed.load(scheduled_only=False, start=S["sample"]["m2_start"])
     surp = surp[surp["date"] <= END]
     cal = build_calendar(surp, td).drop_duplicates("day0").set_index("day0")
 

@@ -1,7 +1,15 @@
 # Project-wide settings. Paths are relative to the repo root unless absolute.
 
 [sample]
-start = "1994-01-01"
+# Main sample (decided 2026-11-24, Seth): scheduled meetings from the first day of
+# Millisecond TAQ, intraday [-30, +10] min returns only (162 meetings 2003-09..2023-12).
+# The daily measure and the 1994-2003 meetings are dropped.
+start = "2003-09-10"
+# M2 (Chen replication, done) used 1994-2023; its scripts (02-05) still read this.
+m2_start = "1994-01-01"
+# First year of CRSP/Compustat pulls: one year before the main sample for formation
+# and betas. Rerunning the M2 scripts needs a pull from m2_start instead.
+data_start = "2002-01-01"
 # Main sample ends with the SF Fed file (last surprise 2023-12-13; decided 2026-11-17).
 # Extend when the SF Fed adds 2024-2025 surprises.
 end = "2023-12-31"
