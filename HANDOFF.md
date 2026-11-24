@@ -1,9 +1,29 @@
-# Handoff (started 2026-11-17, updated 2026-11-20)
+# Handoff (started 2026-11-17, updated 2026-11-24)
 
 Written at the end of the first working session, for Kenzo and Grigorios and for any
 future Claude session. The plan is in [ROADMAP.md](ROADMAP.md) and setup reference is
 in the [README](README.md). This note covers what changed, what's next, and how to
 catch up.
+
+## 0a. Update 2026-11-24: M3 started, sample is 2003+ intraday only
+
+- **Decision (Seth):** the main sample is the 162 scheduled meetings from 2003-09 (first
+  Millisecond TAQ day) to 2023-12, and the day-0 return is the intraday [-30, +10] min TAQ
+  midpoint change. The daily day-0 measure and 1994-2003 are dropped. Settings:
+  `sample.start = 2003-09-10`; `sample.m2_start = 1994-01-01` keeps the M2 scripts as they
+  were; `sample.data_start = 2002` for new CRSP/Compustat pulls (rerunning M2 from scratch
+  needs `pull_crsp(start_year=1994)`).
+- **M3 step 1 done** (`make portfolios`, `scripts/08_portfolio_durations.py`,
+  `fomcdur.extension.portfolio_durations`): day-0 durations of the FF49 industries and of
+  size, B/M, profitability and leverage deciles, each with the robustness set. Industry
+  durations are reliable (split-half 0.79, equal-duration test rejected); characteristic
+  deciles are flat except size. Numbers in ROADMAP M3.
+- **M4 first pass done** (`make horizons`, ~75 s): D(h) anchored at the pre-announcement
+  TAQ price (Seth approved). Same-day share for the market ~0.35-0.4; the B/M spread and
+  a size reversal build after the 40-minute window. Numbers in ROADMAP M4.
+- **Next:** M3 step 2, the industry-portfolio panel (duration on lagged VW characteristics),
+  then the out-of-sample fitted durations and quintile check.
+- The script runs in ~25 s from the raw files (TAQ midpoints, CRSP 2003-2023, Compustat).
 
 ## 0. Update 2026-11-20: M2 done, what's next
 
@@ -17,8 +37,8 @@ catch up.
 - **Design decision (Seth):** weak stock-level agreement = low signal-to-noise. From M3 on we
   estimate durations on **portfolios** (French 49 industries, plus characteristic deciles),
   by regression on the surprise. See "Design decisions after M2" in ROADMAP.
-- **Next:** M3 step 1, day-0 durations for the 49 industry portfolios, intraday from 2003-09
-  (TAQ files for 162 meetings are already on Seth's Mac) and daily before.
+- **Next:** M3 step 1, day-0 durations for the 49 industry portfolios (done 2026-11-24,
+  see 0a).
 - **Running heavy jobs:** WRDS and TAQ work runs on Seth's Mac (Remote Control session from
   a Claude thread, or by hand). TAQ pulls are slow (1-11 min per meeting) and resumable.
   Run them detached (`caffeinate`, `nohup`) with retries.

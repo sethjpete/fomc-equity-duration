@@ -1,6 +1,6 @@
 PY ?= python
 
-.PHONY: install data data-free data-wrds report replicate data-taq intraday test lint
+.PHONY: install data data-free data-wrds report replicate data-taq intraday portfolios horizons test lint
 
 install:            ## editable install (includes wrds) + dev tools
 	$(PY) -m pip install -e ".[dev]"
@@ -24,6 +24,12 @@ data-taq:           ## intraday NBBO midpoints at FOMC meetings from WRDS Millis
 
 intraday:           ## intraday vs daily vs Chen day-0 durations -> results/tables/m2_intraday.md
 	$(PY) scripts/06_intraday_durations.py
+
+portfolios:         ## M3 day-0 durations of FF49 industry and characteristic-decile portfolios (intraday, 2003-2023)
+	$(PY) scripts/08_portfolio_durations.py
+
+horizons:           ## M4 D(h) curves anchored at the pre-announcement TAQ price, h = 0..20
+	$(PY) scripts/09_horizon_durations.py
 
 test:
 	$(PY) -m pytest -q

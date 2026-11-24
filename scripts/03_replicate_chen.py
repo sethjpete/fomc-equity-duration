@@ -26,7 +26,7 @@ from fomcdur.replication import chen_compare as cc
 from fomcdur.replication.duration import portfolio_durations
 
 S = settings()
-START, END = pd.Timestamp(S["sample"]["start"]), pd.Timestamp(S["sample"]["end"])
+START, END = pd.Timestamp(S["sample"]["m2_start"]), pd.Timestamp(S["sample"]["end"])
 SCALE = S["duration"]["surprise_scale"]
 CHEN_START, CHEN_END = pd.Timestamp("1995-01-01"), pd.Timestamp("2016-12-31")
 TABLES, FIGS = RESULTS / "tables", RESULTS / "figures"
@@ -48,7 +48,7 @@ def main(chen_file: str) -> None:
     # Surprises and day 0
     factors = french.load_factors()
     td = factors.index
-    surp = sffed.load(scheduled_only=True)
+    surp = sffed.load(scheduled_only=True, start=S["sample"]["m2_start"])
     surp = surp[surp["date"] <= END]
     cal = build_calendar(surp, td).set_index("day0")
     day0 = cal.index

@@ -53,7 +53,7 @@ def est(r: pd.Series, s: pd.Series) -> str:
 def main() -> None:
     out = ["# M2 robustness and units", f"\nGenerated {date.today()}. Cells: D (HC1 se) n."]
     td = french.load_factors().index
-    surp = sffed.load(scheduled_only=True)
+    surp = sffed.load(scheduled_only=True, start=S["sample"]["m2_start"])
     surp = surp[surp["date"] <= END]
     cal = build_calendar(surp, td).set_index("day0")
     s = cal["mps"]

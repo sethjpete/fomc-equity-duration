@@ -78,22 +78,40 @@ Tick boxes as work lands; open a GitHub issue per bullet when someone picks it u
   ratio in stock-level announcement durations**: one 40-minute return per stock per
   announcement is mostly noise. That drives the design choice below.
 
-## Design decisions after M2 (2026-11-20, Seth)
+## Design decisions after M2 (2026-11-20 and 2026-11-24, Seth)
 - **Estimate on portfolios, not stocks.** From M3 on, durations are estimated for
   portfolios that average out idiosyncratic noise: Ken French **49 industries** (VW, SIC map
   from `french.load_siccodes49`) as the base cross-section, plus characteristic deciles.
   Stock-level ratios are used only to replicate Chen.
-- **Main measure:** regression of portfolio returns on the surprise (with robust se), not
-  per-stock ratios. Intraday TAQ [-30, +10] for day 0 from 2003-09, daily CRSP for
-  1994-2003 and for horizons h >= 1.
+- **Sample and measure (2026-11-24): 2003 onward, intraday only.** Main sample = the 162
+  scheduled meetings from 2003-09-10 (first Millisecond TAQ day) to 2023-12 with an SF Fed
+  surprise (`sample.start`). Day-0 return = TAQ NBBO midpoints [-30, +10] min. The daily
+  day-0 measure and the 1994-2003 meetings are dropped. M2 scripts keep their 1994 start
+  (`sample.m2_start`); CRSP/Compustat pulls start in 2002 (`sample.data_start`).
+- **Main measure:** regression of portfolio returns on the surprise (HC1 se), not per-stock
+  ratios.
+- **Robustness set with every result:** all meetings, without the 5 largest |MPS|, without
+  2008-09 and 2020, 2003-2007 vs 2008-2023 (`portfolio_durations.robustness_samples`).
 - **Critique of Chen's metric goes in the extension (M6):** the [1, 300] trim selects on
   noise, and with dER_M roughly proportional to the market return, a beta-one stock's
   duration is close to mechanical (~19 years). The untrimmed intraday measure is our
   alternative.
 
 ## M3. Duration model (industry and characteristic portfolios)
-- [ ] Day-0 durations for the 49 industry portfolios (intraday from 2003, daily before),
-      with robustness block (ex top-5 |MPS|, ex 2008-09/2020, subperiods)
+- [x] Day-0 durations for the 49 industry portfolios and size, B/M, profitability and
+      leverage deciles, with the robustness set (`make portfolios`, 2026-11-24; tables in
+      `results/tables/m3_portfolio_durations.md`, figure `m3_industry_durations.png`).
+      Market D 5.2 (se 0.8), 4.9-5.9 across the robustness set. **Industry durations are
+      mostly signal:** they range from 3.6 (Agric, Food) to 14.5 (Gold); 63% of their
+      cross-sectional variance is not sampling noise, odd vs even meetings correlate 0.65
+      (Spearman-Brown 0.79), and a permutation test rejects equal durations (p < 0.001) in
+      every robustness sample. The top of the ranking is commodities and cyclicals (Gold,
+      Construction, Mines, Steel, Coal), the bottom is staples and health (Food, Drugs,
+      Soda, Meals), so a 40-minute FOMC response looks more like a real-rate / dollar /
+      growth exposure than textbook cash-flow duration. Banks and Fin fell from ~8.7
+      (2003-07) to ~3.3 (2008-23). **Characteristic deciles are flat** except size
+      (10-1 = +1.8, se 0.5, stable across samples: small stocks react less within 10
+      minutes). B/M 10-1 = 0.4 (0.7), profitability -0.2 (0.5), leverage -0.3 (0.4)
 - [ ] Industry-portfolio panel: duration on lagged portfolio characteristics (VW averages
       of z-characteristics); compare with the stock-level pooled fit as a noisy benchmark
 - [ ] Stock-event panel: day-0 returns on the surprise with lagged z-characteristics
@@ -104,10 +122,28 @@ Tick boxes as work lands; open a GitHub issue per bullet when someone picks it u
   and significant (the sort actually separates rate exposure)
 
 ## M4. Horizon durations D(h) (headline)
-- [ ] Cumulative HL returns for h = 0..20 after each scheduled meeting
-- [ ] D(h) with and without 2y/10y post-event yield controls, with factor controls
-- [ ] Pre-specified h = 5 and h = 20; full curve figure with confidence bands
-- [ ] Same-day share D(0)/D(20) with event bootstrap CI
+Design (Seth, 2026-11-24): every horizon is anchored at the TAQ midpoint 30 minutes before
+the statement. h = 0 is the 40-minute response (= M3), "0c" runs to the day-0 close, h >= 1
+adds daily CRSP closes. VW buy-and-hold portfolios (`make horizons`,
+`fomcdur.extension.horizon_returns`, `scripts/09_horizon_durations.py`).
+- [x] Cumulative returns for h = 0..20 after each scheduled meeting (2026-11-24)
+- [x] D(h) with and without 2y/10y post-event yield controls; spreads also with FF5 + Mom
+      controls (caution: HML over the window may itself respond to the surprise)
+- [x] Robustness set at h = 0, 0c, 5, 20; same-day share D(0)/D(20) with a meeting bootstrap
+- [x] First results (2026-11-24, `results/tables/m4_horizon_durations.md`,
+      `results/figures/m4_dh_curves.png`):
+  - **Market:** D(0) 5.2 (0.8), D(0c) 6.2 (2.2), D(1) 11.2 (2.8), D(20) 13.3 (7.9). Same-day
+    share D(0)/D(20) = 0.39; with yield controls 0.33, bootstrap CI [0.16, 1.32]. The drift
+    is strong in 2003-07 (D(20) 22.5, se 7.5) and weak after 2008 (9.2, se 10.3). Yields
+    also keep moving: the 2y moves 0.72pp per pp of MPS on day 0 and ~1.0 by day 20.
+  - **B/M 10-1:** 0.4 (0.7) at 40 minutes, 4.4 (1.7) at the close, 21 (13) at h = 20; with
+    FF5 + Mom controls 21.8 (7.4). The value spread is almost all post-window drift.
+  - **Size 10-1:** +1.8 (0.5) at 40 minutes, then reverses: -0.9 at the close, -14.9 (7.8)
+    at h = 20 (-9.9, se 4.2 with factors). Small stocks react late, then more.
+  - **Industries:** D(0) ranks carry over (corr with D(0c) 0.93, with D(20) 0.58), but
+    D(20) is too noisy industry by industry (mean se 10.7).
+- [ ] Pre-specified h = 5 and h = 20 written up; decide the headline portfolio (fitted
+      duration quintiles from M3 step 2, or B/M as a first pass)
 - **Check:** headline figure and table in `results/`, written into the paper
 
 ## M5. Strategy

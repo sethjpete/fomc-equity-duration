@@ -51,7 +51,8 @@ def write_sffed(path, as_dates=False):
 @pytest.mark.parametrize("as_dates", [True, False])
 def test_sffed_load_real_layout(raw, as_dates):
     write_sffed(sffed.raw_dir("sffed") / sffed.FILENAME, as_dates=as_dates)
-    df = sffed.load()  # scheduled, from 1994, MPS present
+    assert list(sffed.load()["date"].dt.year) == [2020, 2023]  # main sample from 2003-09
+    df = sffed.load(start="1994-01-01")  # scheduled, MPS present
     assert list(df["date"].dt.strftime("%Y-%m-%d")) == ["1994-02-04", "2020-04-29", "2023-12-13"]
     assert df["mps"].iloc[-1] == pytest.approx(-0.0818608)  # pp
     assert np.isnan(df["mps_orth"].iloc[1])
@@ -62,7 +63,7 @@ def test_sffed_load_real_layout(raw, as_dates):
 
 def test_calendar_moves_after_close_and_weekend(raw):
     write_sffed(sffed.raw_dir("sffed") / sffed.FILENAME)
-    s = sffed.load(scheduled_only=False, drop_missing=False)
+    s = sffed.load(scheduled_only=False, start="1994-01-01", drop_missing=False)
     cal = build_calendar(s, pd.bdate_range("1994-01-03", "2024-01-31")).set_index("date")
     assert cal.loc["2020-03-15", "day0"] == pd.Timestamp("2020-03-16")  # Sunday 5pm -> Monday
     assert cal.loc["1994-04-18", "day0"] == pd.Timestamp("1994-04-18")  # morning, same day
